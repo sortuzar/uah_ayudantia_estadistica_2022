@@ -1,0 +1,862 @@
+---
+title: "Ayudantía 1"
+subtitle: "Manipulación de objetos en R"
+author: "Santiago Ortúzar"
+institute:
+  - "saortuza@uc.cl"
+  - "Estadística Descriptiva en R"
+  - "Prof. Alejandro González"
+  - "Universidad Alberto Hurtado - FEN"
+date: "Viernes 1 de abril de 2022"
+fontsize: 11pt
+output:
+  beamer_presentation:
+    latex_engine: xelatex
+    theme: "Antibes"
+    colortheme: "seahorse"
+    slide_level: 2
+header-includes:
+  - \usepackage[spanish, es-tabla]{babel}
+  - \usepackage{graphicx}
+  - \usepackage{caption}
+  - \usepackage{hyperref}
+  - \usepackage{float}
+  - \usepackage[export]{adjustbox}
+  - \usepackage{xcolor}
+  - \setbeamertemplate{footline}[frame number]
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, include = TRUE, warning = FALSE, message = FALSE)
+```
+
+```{r preambulo}
+rm(list=ls())
+
+setwd("D:/SANTIAGO/OneDrive/Documentos/2022 Ayudantía UAH A. González Estadística R")
+```
+
+## Presentación
+
+- Contacto: saortuza@uc.cl (mail UAH pendiente).
+
+- Confianza:
+
+  - Por favor, escribir SIEMPRE en caso de dudas.
+  
+  - Exigir feedback y apoyo.
+  
+- Ayudantías no son obligatorias ni tienen nota asociada.
+
+  - Las/los invito a participar y tratar de ajustarse a la metodología que seguiremos en las ayudantías.
+
+## Calendario
+
+- *Tutorial instalación R y RStudio: Viernes 1 de abril (cápsula).*
+
+- Ayudantía 1: Viernes 1 de abril (cápsula).
+
+*Calendario todavía sujeto a confirmación por fechas de evaluaciones.*
+
+## Plan para las ayudantías
+
+- Primeras ayudantías: lo básico.
+
+  - ¿Qué es R?
+  
+  - Instalar el software (R y RStudio).
+  
+  - Aprender a usar el software.
+  
+## Metodología
+
+- 5 cápsulas y 4 clases sincrónicas.
+
+- Todas las ayudantías irán acompañadas de una presentación y una hoja de sintaxis en R.
+
+- No desgastarse tomando apuntes, toda la información estará en las presentaciones.
+
+## Plan para esta sesión
+
+- Manipulación de objetos en R:
+
+  - Vectores.
+  
+  - Matrices.
+  
+  - Data frames.
+  
+  - Obtener información sobre variables en un data frame.
+
+# Usando RStudio
+
+## Observaciones
+
+- El símbolo > en la consola indica que R no está corriendo ningún análisis actualmente y que podemos escribir e ingresar código.
+
+- En principio, R lee líneas de código separadas por puntos aparte como funciones diferentes.
+
+- Podemos correr funciones seleccionando el pedazo de texto (código) que nos interesa y apretando **Control + Enter** *(para Windows)* y **Comando + Enter** *(MacOS)*.
+
+- R permite agregar texto a nuestra hoja de sintaxis sin interpretarlo como código, siempre que esté escrito después de `#`.
+
+## Observaciones
+
+```{r, echo=TRUE}
+55+45 #"55+45" es código de R, pero esto no
+
+#Esta función es útil para comentar nuestro código
+
+#Ayuda a quien lo lea a entenderlo mejor 
+#(muchas veces nosotros mismos)
+```
+
+## Los objetos en R
+
+- Recordemos que R es un lenguaje de programación orientada a objetos.
+
+- Un objeto en R es cualquier cosa a la que podamos asignar información numérica o alfabética.
+
+- Para asignar información a un objeto, usaremos un símbolo de flecha hacia la izquierda: `<-`.
+
+## Los objetos en R
+
+```{r, echo=TRUE}
+objeto1 <- 1
+
+objeto2 <- 1 + 1
+
+objeto3 <- 2-1
+```
+
+- Estas son funciones para *crear* objetos, pero por sí mismos no nos "muestran" el objeto creado.
+
+- Para "llamar" al objeto creado debemos escribir el nombre del objeto respectivo en la consola.
+
+## Los objetos en R
+
+```{r, echo=TRUE}
+objeto1
+```
+
+- El objeto que aquí llamamos `objeto1` contiene el valor numérico 1.
+
+## Los objetos en R
+
+```{r, echo=TRUE}
+objeto2
+```
+
+- `objeto2` contiene la suma de 1 + 1, por lo tanto al "llamarlo" nos entrega el valor numérico 2.
+
+## Los objetos en R
+
+```{r, echo=TRUE}
+objeto3
+```
+
+- `objeto3` contiene la resta de 2 - 1, por lo que nos reporta un valor número 1.
+
+- Así, si bien `objeto1` y `objeto3` nos entregan la misma información (el valor 1), se generan a partir de funciones diferentes.
+
+## Los objetos en R
+
+- Noten como cada objeto fue generado por código escrito en la **sintaxis**, que R reporta en la **consola** y se **almacena** en el environment.
+
+- Los objetos pueden contener información no sólo numérica sino alfabética.
+
+- Para almacenar texto en un objeto, debemos usar comillas: `""`.
+
+## Los objetos en R
+
+```{r, echo=TRUE}
+objeto4 <- "texto"
+
+objeto4
+
+objeto5 <- "abcd"
+
+objeto5
+```
+
+## Tipos de objetos en R
+
+- Ahora bien, en R hay muchos *tipos* de objetos, y por ahora nos interesan principalmente 2: los *vectores* y las *bases de datos (data frames)*, aunque mencionaremos otros.
+
+## Tipos de objetos en R: vectores
+
+- Un vector es un tipo de objeto unidimensional que contiene información alfabética o numérica.
+
+- Cuando hablamos de vectores, hablamos de objetos que ya no contienen sólo **un** valor sino **varios** valores.
+
+## Tipos de objetos en R: vectores
+
+```{r, echo=TRUE}
+vector1 <- c(1, 2, 3, 4, 5)
+
+vector1
+
+vector2 <- c("a", "b", "c", "d", "e")
+
+vector2
+```
+
+- Como vemos, `vector1` contiene 5 valores numéricos, mientras que `vector2` contiene 5 valores alfabéticos.
+
+## Tipos de objetos en R: vectores
+
+- El comando `c()`, llamado *concatenate* ("concatenar"), será fundamental para poder asignar múltiples valores (esto es, más de un ítem de información) a un mismo objeto.
+
+- Al ir creando objetos de este tipo, R nos permite avanzar de a poco hacia operaciones más complejas.
+
+- Por ejemplo, creemos otro vector llamado `vector3` y sumémoslo a `vector1`.
+
+## Tipos de objetos en R: vectores
+
+```{r, echo=TRUE}
+vector3 <- c(6, 7, 8, 9, 10)
+
+vector3
+
+vector1 + vector3
+```
+
+- Al sumar `vector1` + `vector3`, obtenemos una nueva información en la consola: los valores `7 9 11 13 15`.
+
+- De hecho, podríamos repetir esta operación pero almacenarla en un nuevo vector: `vector4`.
+
+## Tipos de objetos en R: vectores
+
+```{r, echo=TRUE}
+vector1 + vector3
+
+vector4 <- vector1 + vector3
+
+vector4
+```
+
+## Tipos de objetos en R: vectores
+
+- Sin embargo, no podríamos hacer algo similar con `vector2`, ya que éste contiene valores alfabéticos y no numéricos.
+
+## Tipos de objetos en R: vectores
+
+Si ingresan el código
+
+```{r, echo=TRUE, eval=FALSE}
+vector1 + vector2
+```
+
+R entregará el siguiente mensaje:
+
+\begin{figure}[H]
+\centering\includegraphics[keepaspectratio,width=\textwidth, height=.8\textheight]{Imágenes/img1_13.png}
+\end{figure}
+
+## Tipos de objetos en R: vectores
+
+- La razón por la que esto ocurre es que `vector1` y `vector2` pertenecen a "clases" diferentes.
+
+- Con el comando `class()` podemos ver a qué clase corresponde cada uno.
+
+## Tipos de objetos en R: vectores
+
+```{r, echo=TRUE}
+class(vector1)
+
+class(vector2)
+```
+
+- R indica que `vector1` es de clase numérica, mientras que `vector2` es un carácter. También hay una tercera clase de vector, "factor", que veremos más adelante y es muy útil.
+
+  - Dato importante: si ingresamos números a un vector, pero los números van con comillas `""`, R los entenderá como *carácter*, no como un valor *numérico*.
+  
+## Tipos de objetos en R: vectores
+  
+```{r, echo=TRUE}
+vector5 <- c("1", "2", "3", "4", "5")
+
+vector5
+
+class(vector5)
+
+str(vector5)
+```
+
+## Tipos de objetos en R: vectores
+
+- La función `str` (structure) también reporta la clase del objeto, además de un resumen de su información.
+
+```{r, echo=TRUE}
+str(vector5)
+```
+
+- En la práctica la gran mayoría de los análisis estadísticos que realizaremos usan vectores numéricos y factores.
+
+- Las funciones de manipulación de texto y caracteres pueden ser muy útiles cuando tenemos que limpiar y depurar bases de datos.
+
+## Ejercicio
+
+- Cree un vector que contenga los valores 5, 8, 3, 2 y 10, en ese orden. Llame al vector `ejercicio`.
+
+- Realice las siguientes operaciones con el vector:
+
+  - Sume 9 a `ejercicio`.
+
+  - Multiplique `ejercicio` por 2.
+  
+  - Multiplique `ejercicio` por 5/7.
+  
+  - Eleve `ejercicio` al cuadrado.
+  
+## Ejercicio
+
+\scriptsize
+
+```{r, echo=TRUE}
+ejercicio <- c(5, 8, 3, 2, 10)
+
+ejercicio+9
+
+ejercicio*2
+
+5/7 * ejercicio
+
+ejercicio*ejercicio #o también:
+
+ejercicio^2
+```
+
+\normalsize
+
+## Tipos de objetos en R: matrices
+
+- Una matriz es un tipo de objeto bidimensional que, al igual que un vector, puede tomar valores alfabéticos o numéricos.
+
+```{r, echo=TRUE}
+matriz1 <- matrix(1:25,nrow=5,ncol=5)
+
+matriz1
+```
+
+- El comando le dice a R que cree una matriz cuyos valores vayan del 1 al 25, con 5 filas y 5 columnas.
+
+## Tipos de objetos en R: matrices
+
+- Podemos realizar todas las operaciones del álgebra de matrices:
+
+```{r, echo=TRUE}
+matriz1+matriz1
+```
+
+## Tipos de objetos en R: matrices
+
+- Nosotros no usaremos mucho las matrices propiamente tales, aunque a veces se pueden usar de forma auxiliar para asistir a otras funciones.
+
+- Sí nos interesa poner atención a la notación de R: cuando vemos números separados por comas entre corchetes `[ , ]` estamos hablando de *filas* y *columnas* (en ese orden).
+
+- Así, por ejemplo, podemos ver información sólo para filas y columnas de nuestro interés:
+
+## Tipos de objetos en R: matrices
+
+- Cuarta fila y quinta columna de la matriz 1:
+
+```{r, echo=TRUE}
+matriz1[4,5]
+
+matriz1
+```
+
+## Tipos de objetos en R: bases de datos (data frames)
+
+- Las bases de datos consisten en conjuntos de vectores portadores de valores numéricos o alfabéticos.
+
+- Veamos una muestra de 373 casos elegidos al azar de la III Encuesta Nacional de Participación y Consumo Cultural (2009). 
+
+```{r, echo=FALSE}
+load("BBDD/consumo.cultural.Rdata")
+
+cc <- as.data.frame(consumo.cultural[ ,c("folio",
+                                         "SEL_Sexo","SEL_Edad",
+                                         "SEL_NEduc",
+                                         "m6_64", "m6_66", 
+                                         "m6_67")])
+
+set.seed(0325)
+
+cc1 <- cc[sample(nrow(cc), size=400), ]
+
+cc1$SEL_Sexo[cc1$SEL_Sexo == 1] <- "Hombre"
+cc1$SEL_Sexo[cc1$SEL_Sexo == 2] <- "Mujer"
+
+cc1$SEL_NEduc[cc1$SEL_NEduc == 1] <- 1 #"Preescolar"
+cc1$SEL_NEduc[cc1$SEL_NEduc == 2] <- 1 #"Preescolar"
+cc1$SEL_NEduc[cc1$SEL_NEduc == 3] <- 1 #"Primaria"
+cc1$SEL_NEduc[cc1$SEL_NEduc == 4] <- 2 #"Secundaria"
+cc1$SEL_NEduc[cc1$SEL_NEduc == 5] <- 2 #"Secundaria"
+cc1$SEL_NEduc[cc1$SEL_NEduc == 6] <- 2 #"Secundaria"
+cc1$SEL_NEduc[cc1$SEL_NEduc == 7] <- 2 #"Secundaria"
+cc1$SEL_NEduc[cc1$SEL_NEduc == 8] <- 3 #"Superior"
+cc1$SEL_NEduc[cc1$SEL_NEduc == 9] <- 3 #"Superior"
+cc1$SEL_NEduc[cc1$SEL_NEduc == 10] <- 3 #"Superior"
+cc1$SEL_NEduc[cc1$SEL_NEduc == 11] <- 3 #"Superior"
+cc1$SEL_NEduc[cc1$SEL_NEduc == 12] <- NA
+cc1$SEL_NEduc[cc1$SEL_NEduc == 99] <- NA
+
+library(reshape)
+cc1 <- reshape::rename(cc1, c(m6_64 = "libros_dummy", 
+                              m6_66 = "libros_numero", 
+                              m6_67 = "libros_frecuencia"))
+
+cc1$libros_dummy[cc1$libros_dummy==1] <- "Sí"
+cc1$libros_dummy[cc1$libros_dummy==2] <- "No"
+cc1$libros_dummy[cc1$libros_dummy==3] <- NA
+cc1$libros_dummy <- as.character(cc1$libros_dummy)
+cc1$libros_numero[cc1$libros_numero==99] <- NA
+
+cc1$libros_frecuencia <- as.numeric(cc1$libros_frecuencia)
+cc1$libros_frecuencia[cc1$libros_frecuencia==2] <- 1
+cc1$libros_frecuencia[cc1$libros_frecuencia==3] <- 2
+cc1$libros_frecuencia[cc1$libros_frecuencia==4] <- 2
+cc1$libros_frecuencia[cc1$libros_frecuencia==5] <- 2
+cc1$libros_frecuencia[cc1$libros_frecuencia==6] <- 3
+cc1$libros_frecuencia[cc1$libros_frecuencia==7] <- 3
+cc1$libros_frecuencia[cc1$libros_frecuencia==8] <- 3
+
+library(dplyr)
+library(tidyr)
+
+#cc1 <- cc1 %>%
+#  dplyr::mutate(libros_numero = replace_na(libros_numero, 0))
+
+#cc1 <- cc1 %>%
+#  dplyr::mutate(libros_frecuencia = replace_na(libros_frecuencia, 4))
+
+cc1 <- cc1 %>% 
+  dplyr::mutate(libros_numero=ifelse(libros_dummy=='No', replace_na(libros_numero, 0), libros_numero))
+
+cc1 <- cc1 %>% 
+  dplyr::mutate(libros_frecuencia=ifelse(libros_dummy=='No', replace_na(libros_frecuencia, 4), libros_frecuencia))
+
+cc1$libros_frecuencia <- factor(cc1$libros_frecuencia,
+levels = c(1,2,3, 4),
+labels = c("Todos o casi todos los días",
+           "1 día por semana - 1 día al mes",
+           "Menos de una vez al mes",
+           "Menos de una vez al año"))
+
+cc1$SEL_NEduc <- factor(cc1$SEL_NEduc,
+levels = c(1,2,3),
+labels = c("Primaria",
+           "Secundaria",
+           "Superior"))
+
+cc1a <- na.omit(cc1)
+
+save(cc1a, file = "BBDD/cc1.RData")
+
+rm(consumo.cultural)
+rm(cc)
+rm(cc1)
+rm(cc1a)
+```
+
+## Tipos de objetos en R: bases de datos (data frames)
+
+- La base de datos contiene las siguientes variables: 
+  - `folio` (identificador).
+  - `SEL_Sexo` (quizá versiones más actualizadas preguntan por género).
+  - `SEL_Edad` (edad como valor numérico).
+  - `SEL_NEduc` (nivel educativo: grado más alto alcanzado).
+  - `libros_dummy`: *m6_64: Con excepción de textos escolares y considerando libros usados o nuevos, ¿ha leído usted algún libro en los últimos 12 meses?* (variable dicotómica)
+  - `libros_numero`: *m6_66: En los últimos 12 meses, ¿cuántos libros ha leído?* (variable numérica)
+  - `libros_frecuencia`: *m6_67: Sin considerar textos escolares, ¿con qué frecuencia acostumbra leer libros?* (variable categórica con 4 categorías)
+
+## Tipos de objetos en R: bases de datos (data frames)
+
+- Vamos a seleccionar el directorio donde trabajar:
+
+  - ¿Cómo encontrar rápido el directorio?
+  
+\tiny
+
+```{r, echo=TRUE}
+getwd()
+```
+
+\normalsize
+
+- Fijar directorio:
+
+\tiny
+
+```{r, echo=TRUE, eval=FALSE}
+setwd("D:/SANTIAGO/OneDrive/Documentos/2022 Ayudantía UAH A. González Estadística R")
+```
+
+\normalsize
+
+## Tipos de objetos en R: bases de datos (data frames)
+
+```{r, echo=TRUE}
+load("BBDD/cc1.Rdata")
+```
+
+- Decirle a R dónde buscar el dataframe en mi computador.
+
+## Tipos de objetos en R: bases de datos (data frames)
+
+- Comandos que servirán para examinar bases de datos: `head()`, `tail()`, `str()`, `dim()`.
+
+\tiny
+
+```{r, echo=TRUE}
+head(cc1a)
+```
+\normalsize
+
+## Tipos de objetos en R: bases de datos (data frames)
+
+\tiny
+
+```{r, echo=TRUE}
+tail(cc1a)
+```
+
+\normalsize
+
+## Tipos de objetos en R: bases de datos (data frames)
+
+\scriptsize
+
+```{r, echo=TRUE}
+str(cc1a)
+```
+
+\normalsize
+
+## Tipos de objetos en R: bases de datos (data frames)
+
+```{r, echo=TRUE}
+dim(cc1a)
+```
+
+## Tipos de objetos en R: bases de datos (data frames)
+
+- Para acceder a una variable en particular dentro de la base de datos, debemos usar el comando `$`.
+
+- Ejemplos de descriptivos univariados:
+
+  - Conteo de frecuencias de sexo y lectura de libros en el último año:
+
+\scriptsize
+
+```{r, echo=TRUE}
+table(cc1a$SEL_Sexo)
+
+table(cc1a$libros_dummy)
+```
+
+\normalsize
+## Tipos de objetos en R: bases de datos (data frames)
+
+- Para acceder a una variable en particular dentro de la base de datos, debemos usar el comando `$`.
+
+- Ejemplos de descriptivos univariados:
+
+  - Proporciones de cada categoría de sexo y lectura en los últimos 12 meses:
+
+\scriptsize
+  
+```{r, echo=TRUE}
+prop.table(table(cc1a$SEL_Sexo))
+
+prop.table(table(cc1a$libros_dummy))
+```
+
+\normalsize
+
+## Tipos de objetos en R: bases de datos (data frames)
+
+- Para acceder a una variable en particular dentro de la base de datos, debemos usar el comando `$`.
+
+- Ejemplos de descriptivos univariados:
+
+  - Frecuencias de qué tan seguido leen las personas encuestadas:
+
+\scriptsize
+
+```{r, echo=TRUE}
+table(cc1a$libros_frecuencia)
+```
+
+\normalsize
+
+## Tipos de objetos en R: bases de datos (data frames)
+
+- Para acceder a una variable en particular dentro de la base de datos, debemos usar el comando `$`.
+
+- Ejemplos de descriptivos univariados:
+
+  - Proporciones de qué tan seguido leen las personas encuestadas:
+
+\scriptsize
+
+```{r, echo=TRUE}
+prop.table(table(cc1a$libros_frecuencia))
+```
+
+\normalsize
+
+## Tipos de objetos en R: bases de datos (data frames)
+
+  - Proporciones de qué tan seguido leen las personas encuestadas:
+  
+  - Para mejor presentación de las proporciones:
+
+\scriptsize
+
+```{r, echo=TRUE}
+100*prop.table(table(cc1a$libros_frecuencia))
+```
+
+\normalsize
+
+## Tipos de objetos en R: bases de datos (data frames)
+
+  - Proporciones de qué tan seguido leen las personas encuestadas:
+  
+  - Para mejor presentación de las proporciones:
+
+\scriptsize
+
+```{r, echo=TRUE}
+round(100*prop.table(table(cc1a$libros_frecuencia)),digits=1)
+```
+
+\normalsize
+
+## Tipos de objetos en R: bases de datos (data frames)
+
+- Para acceder a una variable en particular dentro de la base de datos, debemos usar el comando `$`.
+
+- Ejemplos:
+
+  - ¿Cuáles son la media y la mediana de libros leídos el último año?
+
+```{r, echo=TRUE}
+mean(cc1a$libros_numero)
+
+median(cc1a$libros_numero)
+```
+
+## Tipos de objetos en R: bases de datos (data frames)
+
+- Al igual que con las matrices, podemos utilizar los corchetes para señalar filas y columnas de nuestro interés.
+
+- Por ejemplo, veamos qué valor tiene en la fila 100 la pregunta sobre frecuencia de lectura:
+
+\scriptsize
+
+```{r, echo=TRUE}
+cc1a[100,"libros_frecuencia"]
+
+#o lo mismo escrito de otra forma:
+cc1a[100,7] 
+#porque libros_frecuencia es la séptima variable (columna)
+#de nuestro data frame
+```
+
+\normalsize
+
+## Tipos de objetos en R: bases de datos (data frames)
+
+- O los valores de las tres variables sobre lectura en las filas 150 y 251:
+
+\tiny
+
+```{r, echo=TRUE}
+cc1a[150,c("libros_dummy","libros_numero","libros_frecuencia")]
+
+cc1a[251,c("libros_dummy","libros_numero","libros_frecuencia")]
+
+#o lo mismo escrito de otra forma:
+cc1a[251,5:7]
+#porque las variables son la número 5, 6 y 7
+#de nuestro data frame
+```
+
+\normalsize
+
+## Tipos de objetos en R: bases de datos (data frames)
+
+- Veamos ahora algunos descriptivos bivariados (variable numérica según variable categórica):
+
+  - Cómo se distribuyen las *medias* de una variable numérica según las diferentes *categorías* de nivel educativo y sexo.
+  
+\small
+
+```{r, echo=TRUE}
+tapply(cc1a$libros_numero, cc1a$SEL_NEduc, mean)
+#media de libros leídos por año según nivel educativo
+
+tapply(cc1a$libros_numero, cc1a$SEL_Sexo, mean)
+#media de libros leídos por año según sexo
+```
+\normalsize
+
+## Tipos de objetos en R: bases de datos (data frames)
+
+- Veamos ahora algunos descriptivos bivariados (asociación entre variables categóricas, que se registra en una tabla de contingencia):
+  
+\tiny
+
+```{r, echo=TRUE}
+table(cc1a$libros_frecuencia,cc1a$SEL_NEduc)
+#frecuencia de lectura según nivel educativo
+
+#guardemos esto como objeto para mayor simplicidad:
+lectura_NEduc <- table(cc1a$libros_frecuencia,cc1a$SEL_NEduc)
+
+#lo mismo de otra manera:
+xtabs(~libros_frecuencia+SEL_NEduc, data=cc1a)
+```
+\normalsize
+
+## Tipos de objetos en R: bases de datos (data frames)
+
+- Veamos ahora algunos descriptivos bivariados (asociación entre variables categóricas):
+
+  - Se entiende mejor con proporciones:
+  
+\scriptsize
+
+```{r, echo=TRUE}
+round(100*prop.table(lectura_NEduc),2)
+```
+\normalsize
+
+## Tipos de objetos en R: bases de datos (data frames)
+
+- Veamos ahora algunos descriptivos bivariados (asociación entre variables categóricas):
+
+  - Se entiende mejor con proporciones (*porcentaje de columna*):
+  
+\scriptsize
+
+```{r, echo=TRUE}
+round(100*prop.table(lectura_NEduc, margin=2),2)
+#el porcentaje de columna se especifica con margin=2
+```
+\normalsize
+
+## Tipos de objetos en R: bases de datos (data frames)
+
+\tiny
+
+```{r, echo=FALSE}
+round(100*prop.table(lectura_NEduc, margin=2),2)
+```
+
+\normalsize
+
+\scriptsize
+
+- ¿Cómo interpretar el porcentaje de columna? De arriba hacia abajo, todas las columnas suman 100% (no así las filas de izquierda a derecha).
+  
+- Nos indican cómo varía la frecuencia de lectura según nivel educativo.
+  
+- Así, entre quienes están/alcanzaron la primaria, alrededor del 67% declara que lee menos de un libro al año, mientras que el 15% lee todos o casi todos los días.
+  
+- Entre quienes están/alcanzaron la educación superior, alrededor del 39% no lee casi nunca, mientras que el 24% lee todos o casi todos los días.
+  
+\normalsize
+
+## Tipos de objetos en R: bases de datos (data frames)
+
+- Ahora con *porcentaje de fila*:
+  
+\tiny
+
+```{r, echo=TRUE}
+round(100*prop.table(lectura_NEduc, margin=1),2)
+#el porcentaje de columna se especifica con margin=1
+```
+\normalsize
+
+\scriptsize
+
+- ¿Cómo interpretar el porcentaje de fila? De izquierda a derecha, todas las filas suman 100% (no así las columnas de arriba hacia abajo).
+  
+- Nos indica cómo varía el nivel educativo en cada tramo/grupo/categoría de frecuencia de lectura.
+  
+- Así, entre quienes leen todos/casi todos los días, alrededor del 24% alcanzó la educación primaria, mientras que el 31% alcanzó la educación superior.
+  
+- Entre quienes leen menos de un libro al año, el 31% alcanzó la primaria, mientras que el 15% alcanzó la educación superior.
+
+\normalsize
+
+# Propuesta de ejercicio
+  
+## Propuesta de ejercicio (totalmente voluntario)
+
+- Utilizando la base de datos `cc1a` (archivo `cc1.Rdata`) que analizamos esta clase, y el código visto en clases y en ayudantía, haga un análisis de la lectura en Chile según nuestros datos.
+
+- Puede incluir tablas de descriptivos univariados o bivariados, además de gráficos.
+
+## Propuesta de ejercicio (totalmente voluntario)
+
+```{r, echo=FALSE, include=TRUE, out.width = '90%'}
+library(ggplot2)
+library(scales)
+
+ggplot(data=cc1a, aes(SEL_NEduc)) +
+  geom_bar(aes(fill=as.factor(libros_frecuencia)), position="fill",
+           width = 0.4) +
+  theme(legend.text = element_text(size = 11),
+        legend.title = element_text(size = 13)) +
+  scale_y_continuous(labels=scales::percent) +
+  labs(x = "Nivel educativo",
+     y = "Porcentaje",
+     fill = "Frecuencia de lectura",
+     title = "Frecuencia de lectura según nivel educativo (ENPCC, 2009)")
+#theme_bw() +
+```
+
+## Propuesta de ejercicio (totalmente voluntario)
+
+- Más allá del código, ¿qué *información* o *aprendizaje* nos dejan los datos? ¿Hay alguna hipótesis que le parezca pertinente investigar? Sea creativo/a, estamos aprendiendo y equivocarnos da lo mismo.
+
+- Este ejercicio se trata en parte de usar el código, pero también de formular una narración que resuma lo que aprendimos de los datos.
+  
+- Deberíamos aspirar a analizar datos para poder evaluar argumentos y teorías.
+
+# Bibliografía
+
+## Referencias sugeridas
+
+En castellano:
+
+- Hernández, F., & Usuga, O. (2021a). Introducción. En Manual de R. https://fhernanb.github.io/Manual-de-R/ (disponible gratuitamente online).
+
+- Hernández, F., & Usuga, O. (2021b). Tipos de objetos. En Manual de R. https://fhernanb.github.io/Manual-de-R/objetos.html (disponible gratuitamente online).
+
+## Referencias sugeridas
+
+En inglés:
+
+- Paradis, E. (2013). *R for Beginners*. 1–52.
+
+## Referencias complementarias (consulta)
+
+- Beaujean, A. A. (2014). Introduction to R. En *Latent Variable Modeling Using R* (pp. 1–33). Routledge.
+
+- Gorgas, J., & Cardiel, N. (s.f.). Tema 1: Introducción al paquete de software R. https://www.ucm.es/data/cont/docs/339-2016-09-29-Introduccion%20a%20R_v1617.pdf (infografías).
+
+- Zuur, A. F., Ieno, E. N., & Meesters, E. H. W. G. (2009). Ch. 2: Getting Data into R. En *A Beginner’s Guide to R* (pp. 29–56). Springer.
+
+## Sobre la lectura
+
+- La lectura es de carácter voluntario y no se evaluará.
+
+- Se recomienda leer 1 de las lecturas sugeridas y revisar las complementarias como material de consulta.

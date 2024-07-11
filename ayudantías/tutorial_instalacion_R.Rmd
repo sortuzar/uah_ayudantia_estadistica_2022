@@ -1,0 +1,261 @@
+---
+title: "Tutorial para instalación de R"
+#subtitle: "Introducción al software estadístico R"
+author: "Santiago Ortúzar"
+institute:
+  - "saortuza@uc.cl"
+  - "Estadística Descriptiva en R"
+  - "Prof. Alejandro González"
+  - "Universidad Alberto Hurtado"
+date: "Viernes 1 de abril de 2022"
+fontsize: 13pt
+output:
+  beamer_presentation:
+    latex_engine: xelatex
+    theme: "Antibes"
+    colortheme: "seahorse"
+    slide_level: 2
+header-includes:
+  - \usepackage[spanish, es-tabla]{babel}
+  - \usepackage{graphicx}
+  - \usepackage{caption}
+  - \usepackage{hyperref}
+  - \usepackage{float}
+  - \usepackage[export]{adjustbox}
+  - \usepackage{xcolor}
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, include = TRUE, warning = FALSE, message = FALSE)
+```
+
+```{r preambulo}
+rm(list=ls())
+
+setwd("D:/SANTIAGO/OneDrive/Documentos/2022 Ayudantía UAH A. González Estadística R")
+```
+
+
+
+# Introducción a R
+
+## ¿Qué es R?
+
+- R es un software para el procesamiento, administración y análisis de datos cuantitativos.^[Clase basada en material utilizado en clases por el prof. Ignacio Madero y otros textos de consulta que se mencionan al final.]
+
+- En las sesiones de ayudantía, nuestros objetivos serán:
+
+  - Familiarizarnos con algunas operaciones básicas en R para manipular datos; 
+  
+  - Generar análisis estadísticos simples (además de gráficos); así como
+  
+  - Ejercitar los conceptos aprendidos en clase mediante aplicaciones prácticas.
+  
+## ¿Por qué R?
+
+- A diferencia de otros (Excel, SPSS, Stata, etc.), R es un software libre y gratuito.
+
+  - Usuarias/os pueden acceder a él sin costo.
+  
+  - Distintos investigadores/as en todo el mundo pueden poner materiales a disposición de toda la comunidad R.
+  
+    - Las "librerías" puestas a disposición por los investigadores permiten obtener datos y funciones, a veces de alta complejidad estadística y computacional, simplemente escribiendo un código en el programa, sin costos ni limitaciones.
+    
+    - Al ingresar el código en el programa, R obtendrá el material desde internet y lo instalará en el software R en nuestro computador.
+    
+## ¿Por qué R?
+
+- R funciona en diferentes sistemas operativos, tales como Windows, Mac o Linux.
+
+- En los últimos años se ha popularizado bastante en la comunidad académica, aunque ciertamente dista de ser el único utilizado.
+
+## Un primer obstáculo
+
+- Un problema que suele dificultar la entrada al "mundo R" es la aparente complejidad del software, especialmente su interfaz gráfica.
+
+- Para resolver esto, se han desarrollado herramientas como RStudio, que utilizaremos en el presente curso.
+
+- Así, en las sesiones de ayudantía utilizaremos el "software base" de R asociado a la interfaz RStudio.
+
+  - Por lo tanto, necesitaremos instalar ambos softwares para continuar.
+  
+# Instalación de R y RStudio
+  
+## Descargando R base
+
+- CRAN (Comprehensive R Archive Network) contiene el software base y realiza la mantención de las funciones básicas del programa.
+
+- CRAN también administra y distribuye las librerías creadas de forma colaborativa, descentralizada e independiente por investigadores/as de todo el mundo, permitiendo que estén a disposición de usuarios/as.
+
+- Sitio web: https://cran.r-project.org/
+
+## Descargando R base
+
+\begin{figure}[H]
+\centering\includegraphics[keepaspectratio,width=\textwidth, height=.8\textheight]{Imágenes/img1_1.png}\caption{R Paso 1}\label{rpaso1}
+\end{figure}
+
+- Para este ejemplo usaremos Windows.
+
+## Descargando R base
+
+\begin{figure}[H]
+\centering\includegraphics[keepaspectratio,width=\textwidth, height=.8\textheight]{Imágenes/img1_2.png}\caption{R Paso 2}\label{rpaso2}
+\end{figure}
+
+## Descargando R base
+
+\begin{figure}[H]
+\centering\includegraphics[keepaspectratio,width=\textwidth, height=.8\textheight]{Imágenes/img1_3.png}\caption{R Paso 3}\label{rpaso3}
+\end{figure}
+
+## Descargando R base
+
+- Ya con R base descargado, procedemos a la instalación.
+
+\begin{figure}[H]
+\centering\includegraphics[keepaspectratio,width=\textwidth, height=.6\textheight]{Imágenes/img1_4.png}\caption{R Paso 4}\label{rpaso4}
+\end{figure}
+
+## Instalando R base
+
+- Para la instalación no necesitamos aplicar ninguna configuración especial, simplemente instalar el programa.
+
+# RStudio
+
+- Una vez instalado R base, necesitamos un segundo software, RStudio.
+
+- Utilizaremos RStudio como interfaz del software R base.
+
+- Comentaremos sus características cuando ya esté instalado.
+
+- Lo descargamos aquí: https://www.rstudio.com/
+
+## Descargando RStudio
+
+\begin{figure}[H]
+\centering\includegraphics[keepaspectratio,width=\textwidth, height=.8\textheight]{Imágenes/img1_5.png}\caption{RStudio Paso 1}\label{rstudiopaso1}
+\end{figure}
+
+## Descargando RStudio
+
+\begin{figure}[H]
+\centering\includegraphics[keepaspectratio,width=\textwidth, height=.8\textheight]{Imágenes/img1_6.png}\caption{RStudio Paso 2}\label{rstudiopaso2}
+\end{figure}
+
+## Descargando RStudio
+
+\begin{figure}[H]
+\centering\includegraphics[keepaspectratio,width=\textwidth, height=.6\textheight]{Imágenes/img1_7.png}\caption{RStudio Paso 3}\label{rstudiopaso3}
+\end{figure}
+
+- Para este ejemplo usaremos Windows.
+
+## Descargando RStudio
+
+\begin{figure}[H]
+\centering\includegraphics[keepaspectratio,width=\textwidth, height=.8\textheight]{Imágenes/img1_8.png}\caption{RStudio Paso 4}\label{rstudiopaso4}
+\end{figure}
+
+## Instalando RStudio
+
+- No necesitamos aplicar ninguna configuración especial, sólo instalar el software.
+
+# Usando RStudio
+
+- Cuando abramos RStudio veremos 4 ventanas o pestañas.
+
+\begin{figure}[H]
+\centering\includegraphics[keepaspectratio,width=\textwidth, height=.7\textheight]{Imágenes/img1_9.png}\caption{Usando RStudio (imagen prof. Ignacio Madero)}\label{rstudiousando1}
+\end{figure}
+
+## Consola y hoja de sintaxis
+
+\begin{columns}[t]
+    \begin{column}{.65\textwidth}
+      \adjincludegraphics[width=1.025\linewidth, valign=t]{Imágenes/img1_10.png}
+    \end{column}
+    \begin{column}{.5\textwidth}
+      \begin{itemize}
+        \item En la \textbf{consola \textcolor{red}{(1)}} podemos escribir código para realizar nuestros análisis y ver nuestros resultados.
+        \item La ventaja de usar la ventana de \textbf{sintaxis o scripts \textcolor{cyan}{(2)}} es que podemos guardar nuestro código en un archivo y ``correrlo'' desde ahí.
+      \end{itemize}
+    \end{column}
+  \end{columns}
+
+## Consola y hoja de sintaxis
+
+\begin{columns}[t]
+    \begin{column}{.65\textwidth}
+      \adjincludegraphics[width=1.025\linewidth, valign=t]{Imágenes/img1_10.png}
+    \end{column}
+    \begin{column}{.5\textwidth}
+      \begin{itemize}
+        \item Al guardar nuestro código en una \textbf{hoja de sintaxis (o script) \textcolor{cyan}{(2)}}, podemos hacer análisis sin tener que escribirlos manualmente en la consola.
+        \item Además, guardar el código permite que nuestros análisis sean reproducibles, de modo que otros investigadores puedan revisarlos.
+      \end{itemize}
+    \end{column}
+  \end{columns}
+
+## Consola y hoja de sintaxis
+
+\begin{columns}[t]
+    \begin{column}{.65\textwidth}
+      \adjincludegraphics[width=1.025\linewidth, valign=t]{Imágenes/img1_10.png}
+    \end{column}
+    \begin{column}{.5\textwidth}
+      \begin{itemize}
+        \item Hacer análisis reproducibles y transparentes es un gran logro hacia una mejor investigación científica.
+        \item En términos prácticos, el uso de código es de las cosas que más nos aparta de software como Excel y lo que para algunas personas puede resultar más incómodo al principio.
+      \end{itemize}
+    \end{column}
+  \end{columns}
+
+## Environment
+
+\begin{columns}[t]
+    \begin{column}{.65\textwidth}
+      \adjincludegraphics[width=1.025\linewidth, valign=t]{Imágenes/img1_11.png}
+    \end{column}
+    \begin{column}{.5\textwidth}
+      \begin{itemize}
+        \item La ventana superior a la derecha se denomina \textbf{environment \textcolor{violet}{(3)}}.
+        \item R se define como un ''lenguaje de programación orientada a objetos''.
+      \end{itemize}
+    \end{column}
+  \end{columns}
+
+## Environment
+
+\begin{columns}[t]
+    \begin{column}{.5\textwidth}
+      \adjincludegraphics[width=1.025\linewidth, valign=t]{Imágenes/img1_11.png}
+    \end{column}
+    \begin{column}{.65\textwidth}
+      \begin{itemize}
+        \item Mediante el código ingresado en la sintaxis o la consola iremos ''creando'' objetos, que luego serán ''almacenados'' en el \textbf{environment \textcolor{violet}{(3)}}.
+        \item Estos objetos pueden ser bases de datos, pero también valores (números, texto, etc.), análisis, tablas, gráficos, etc.
+        \item Esos objetos podrán ser utilizados a su vez para realizar nuevas operaciones y crear nuevos objetos (que también se pueden almacenar en el environment).
+      \end{itemize}
+    \end{column}
+  \end{columns}
+
+## Visor de gráficos
+
+\begin{columns}[t]
+    \begin{column}{.65\textwidth}
+      \adjincludegraphics[width=1.025\linewidth, valign=t]{Imágenes/img1_12.png}
+    \end{column}
+    \begin{column}{.5\textwidth}
+      \begin{itemize}
+        \item Finalmente, la ventana inferior-derecha, el \textbf{visor de gráficos \textcolor{green}{(4)}}, servirá principalmente para ver gráficos producidos mediante nuestro código.
+        \item También tiene herramientas para administrar archivos y ''paquetes'' (ya veremos qué son más adelante), pero en general se usa más para mirar gráficos.
+      \end{itemize}
+    \end{column}
+  \end{columns}
+
+## Tranquilidad
+
+- Esto puede parecer muy árido e intimidante a primera vista, pero al familiarizarse con el software se irá volviendo mucho más intuitivo.
+
+- Haremos ejercicios para utilizar todas las ventanas correctamente.

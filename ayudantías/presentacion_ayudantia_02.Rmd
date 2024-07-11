@@ -1,0 +1,711 @@
+---
+title: "Ayudantía 2"
+subtitle: "Tipos de variables en R"
+author: "Santiago Ortúzar"
+institute:
+  - "saortuza@uc.cl"
+  - "Estadística Descriptiva en R"
+  - "Prof. Alejandro González"
+  - "Facultad de Economía y Negocios"
+  - "Universidad Alberto Hurtado"
+date: "Viernes 8 de abril de 2022"
+fontsize: 13pt
+output:
+  beamer_presentation:
+    latex_engine: xelatex
+    theme: "Antibes"
+    colortheme: "seahorse"
+    slide_level: 2
+header-includes:
+  - \usepackage[spanish, es-tabla]{babel}
+  - \usepackage{graphicx}
+  - \usepackage{caption,subcaption}
+  - \usepackage{hyperref}
+  - \usepackage{float}
+  - \usepackage[export]{adjustbox}
+  - \usepackage{xcolor}
+  - \setbeamertemplate{footline}[frame number]
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, include = TRUE, warning = FALSE, message = FALSE)
+```
+
+```{r preambulo, echo=FALSE}
+#Borramos objetos del environment
+rm(list=ls())
+
+#Fijamos nuestro directorio
+setwd("D:/SANTIAGO/OneDrive/Documentos/2022 Ayudantía UAH A. González Estadística R")
+```
+
+## Plan para hoy
+
+- ¡Dudas!
+
+- Repaso a los tipos de variables vistos en clases.
+
+- Tipos de vectores (y variables) en R.
+
+- Repaso a visualización de datos vista en clases.
+
+- ¡Más dudas!
+
+# Tipos de variables
+
+## Tipos de variables
+
+- Según cómo las variables estén medidas ("nivel de medición"), podemos hablar de variables *cuantitativas* o variables *cualitativas*.
+
+- Las variables *cuantitativas* entregan información sobre cantidades o números (que se pueden sumar, restar, dividir, multiplicar, etc.).
+
+- Las variables *cualitativas* sirven para representar distintas categorías o atributos de un objeto.
+
+- Ambos tipos de variables describen la realidad, pero describen aspectos diferentes.
+
+## Tipos de variables
+
+\begin{figure}[H]
+\centering\includegraphics[keepaspectratio,width=\textwidth, height=.8\textheight]{Imágenes/img2_04_tipos de variables.png}
+\end{figure}
+
+\tiny
+Adaptado de: https://www.maximaformacion.es/blog-dat/como-describir-tus-datos-en-r-paso-1/ (descargado 7 de abril de 2022)
+\normalsize
+
+## Variables cualitativas
+
+- Las variables cualitativas *nominales* describen características que son heterogéneas y excluyentes entre sí.
+
+  - No se pueden ordenar.
+  
+  - El orden sería totalmente arbitrario.
+  
+- Por ejemplo, el estado civil:
+
+\scriptsize
+Soltero/a - Casado/a - Conviviente (sin formalizar) - Unión civil (AUC) - Viudo/a - Divorciado/a
+
+(además, sólo podemos cumplir 1 de estas condiciones: si estamos casados no podemos estar solteros)
+\normalsize
+
+- O el sexo:
+
+\scriptsize
+Mujer - Hombre
+
+(en este caso hablamos de una variable *dicotómica*: sólo valores 0 y 1)
+\normalsize
+
+## Variables cualitativas
+
+- Las variables cualitativas *ordinales* refieren a atributos o características que se pueden ordenar.
+
+- Por ejemplo, el nivel educativo (educación básica - media - universitaria/técnica) sí sigue un orden:
+
+  - Para entrar a la educación media hay que completar la básica.
+  
+  - Para entrar a la educación universitaria/técnica hay que completar la media.
+
+- Por lo tanto, aunque las variables ordinales se componen de categorías, muchas veces se representan usando números (básica = 1, media = 2, universitaria/técnica = 3).
+
+  - Aquí los números no indican "cantidades" propiamente tales sino un "ordenamiento" o "jerarquía" de los valores.
+  
+## Variables cualitativas
+
+- ¿Ejemplos?
+
+## Variables cuantitativas
+
+- Las variables cuantitativas *discretas* sólo pueden tomar valores finitos entre dos valores.
+
+  - Se representan usando números enteros (1, 2, 3, 4, etc.).
+  
+  - Típicamente, las usamos para contar frecuencias. 
+  
+- Por ejemplo, 
+
+  - ¿Cuántas sillas hay en una casa? 
+  
+  - ¿Cuántos ramos tengo en mi carrera? 
+  
+  - ¿Cuántos días tengo de vacaciones?
+  
+- Contamos cosas que no se pueden subdividir al infinito.
+
+## Variable cuantitativa
+
+- Las variables cuantitativas *continuas* pueden tomar cualquier valor dentro de un intervalo determinado.
+
+  - Se representan usando números reales.
+
+- Por ejemplo:
+
+  - La presión sanguínea.
+  
+  - El crecimiento económico.
+  
+  - La congestión vehicular.
+  
+  - Flujos o tasas en general (tasa de criminalidad en una comuna, nivel socioeconómico de una comuna, etc.)
+  
+## Tipos de variables en R
+
+\begin{figure}[H]
+\centering\includegraphics[keepaspectratio,width=\textwidth, height=.7\textheight]{Imágenes/img2_03_variable types.png}
+\end{figure}
+
+Material de consulta: https://www.rforecology.com/post/data-types-in-r/
+
+## Tipos de variables en R
+
+- Sabemos que en R los vectores^[Recordemos que una variable en una base de datos se define como un vector.] pueden ser de *carácter*, *numéricos* o *factores*.
+
+  - Carácter: toman valores alfabéticos (texto, letras).
+  
+  - Numéricos: valores numéricos.
+  
+  - Factores: números que señalan un ordenamiento o jerarquía de los valores.
+  
+## Tipos de variables en R
+
+Recuerden que podemos inspeccionar la clase de un vector con el siguiente código:
+
+```{r, echo=TRUE}
+#Para un vector creado manualmente por nosotros
+vector1 <- c(1, 2, 3)
+vector2 <- c("a", "b", "c")
+
+class(vector1)
+class(vector2)
+```
+
+## Tipos de variables en R
+
+Recuerden que podemos inspeccionar la clase de un vector con el siguiente código:
+
+```{r, echo=TRUE}
+#Para un vector dentro de una base de datos
+#Usaremos la base de datos 
+#"ToothGrowth" 
+#disponible en R base
+
+data(ToothGrowth) #carga la base 
+#(ahora está en nuestro environment)
+
+#help(ToothGrowth) 
+#para ver información de la base
+```
+
+## Tipos de variables en R
+
+Recuerden que podemos inspeccionar la clase de un vector con el siguiente código:
+
+```{r, echo=TRUE}
+str(ToothGrowth) #3 variables
+
+class(ToothGrowth$len) #largo de los dientes 
+#de los conejillos de indias
+```
+
+## Tipos de variables en R
+
+- En general, las variables cuantitativas (discretas o continuas) se trabajan en R con vectores numéricos.
+
+- Las variables cualitativas ordinales se trabajan con factores.
+
+- Las cualitativas nominales se pueden trabajar con vectores de carácter o con factores, pero recordando que el orden de los factores es arbitrario.
+
+```{r, echo=TRUE}
+#install.packages("PASWR2")
+library(PASWR2)
+data(BABERUTH)
+
+class(BABERUTH$team) #el equipo se trabaja como factor
+```
+
+## Tipos de variables en R
+
+```{r, echo=TRUE}
+levels(BABERUTH$team)
+```
+
+## Transformaciones de tipos de variable en R
+
+- En general, raras veces una base de datos viene en un formato "lista" para trabajar.
+
+- Eso implica hacer arreglos y revisar bien (entre otras cosas) los niveles de medición de nuestras variables.
+
+```{r, echo=FALSE}
+load("BBDD/consumo.cultural.Rdata")
+
+cc <- as.data.frame(consumo.cultural[ ,c("folio",
+                                         "SEL_Sexo","SEL_Edad",
+                                         "SEL_NEduc",
+                                         "m6_64", "m6_66", 
+                                         "m6_67")])
+
+set.seed(0325)
+
+cc1 <- cc[sample(nrow(cc), size=400), ]
+
+cc1$SEL_Sexo[cc1$SEL_Sexo == 1] <- "Hombre"
+cc1$SEL_Sexo[cc1$SEL_Sexo == 2] <- "Mujer"
+
+cc1$SEL_NEduc[cc1$SEL_NEduc == 1] <- 1 #"Preescolar"
+cc1$SEL_NEduc[cc1$SEL_NEduc == 2] <- 1 #"Preescolar"
+cc1$SEL_NEduc[cc1$SEL_NEduc == 3] <- 1 #"Primaria"
+cc1$SEL_NEduc[cc1$SEL_NEduc == 4] <- 2 #"Secundaria"
+cc1$SEL_NEduc[cc1$SEL_NEduc == 5] <- 2 #"Secundaria"
+cc1$SEL_NEduc[cc1$SEL_NEduc == 6] <- 2 #"Secundaria"
+cc1$SEL_NEduc[cc1$SEL_NEduc == 7] <- 2 #"Secundaria"
+cc1$SEL_NEduc[cc1$SEL_NEduc == 8] <- 3 #"Superior"
+cc1$SEL_NEduc[cc1$SEL_NEduc == 9] <- 3 #"Superior"
+cc1$SEL_NEduc[cc1$SEL_NEduc == 10] <- 3 #"Superior"
+cc1$SEL_NEduc[cc1$SEL_NEduc == 11] <- 3 #"Superior"
+cc1$SEL_NEduc[cc1$SEL_NEduc == 12] <- NA
+cc1$SEL_NEduc[cc1$SEL_NEduc == 99] <- NA
+
+library(reshape)
+cc1 <- reshape::rename(cc1, c(m6_64 = "libros_dummy", 
+                              m6_66 = "libros_numero", 
+                              m6_67 = "libros_frecuencia"))
+
+cc1$libros_dummy[cc1$libros_dummy==1] <- "Sí"
+cc1$libros_dummy[cc1$libros_dummy==2] <- "No"
+cc1$libros_dummy[cc1$libros_dummy==3] <- NA
+cc1$libros_dummy <- as.character(cc1$libros_dummy)
+cc1$libros_numero[cc1$libros_numero==99] <- NA
+
+cc1$libros_frecuencia <- as.numeric(cc1$libros_frecuencia)
+cc1$libros_frecuencia[cc1$libros_frecuencia==2] <- 1
+cc1$libros_frecuencia[cc1$libros_frecuencia==3] <- 2
+cc1$libros_frecuencia[cc1$libros_frecuencia==4] <- 2
+cc1$libros_frecuencia[cc1$libros_frecuencia==5] <- 2
+cc1$libros_frecuencia[cc1$libros_frecuencia==6] <- 3
+cc1$libros_frecuencia[cc1$libros_frecuencia==7] <- 3
+cc1$libros_frecuencia[cc1$libros_frecuencia==8] <- 3
+
+library(dplyr)
+library(tidyr)
+
+#cc1 <- cc1 %>%
+#  dplyr::mutate(libros_numero = replace_na(libros_numero, 0))
+
+#cc1 <- cc1 %>%
+#  dplyr::mutate(libros_frecuencia = replace_na(libros_frecuencia, 4))
+
+cc1 <- cc1 %>% 
+  dplyr::mutate(libros_numero=ifelse(libros_dummy=='No', replace_na(libros_numero, 0), libros_numero))
+
+cc1 <- cc1 %>% 
+  dplyr::mutate(libros_frecuencia=ifelse(libros_dummy=='No', replace_na(libros_frecuencia, 4), libros_frecuencia))
+
+#pifias que arreglar
+cc1$libros_frecuencia <- as.numeric(cc1$libros_frecuencia)
+cc1$SEL_NEduc <- as.numeric(cc1$SEL_NEduc)
+cc1$libros_numero <- as.character(cc1$libros_numero)
+
+cc2 <- na.omit(cc1)
+
+save(cc2, file = "BBDD/cc2.RData")
+
+rm(consumo.cultural)
+rm(cc)
+rm(cc1)
+rm(cc2)
+```
+
+## Tipos de variables en R
+
+\scriptsize
+
+```{r echo=TRUE}
+#Borramos objetos del environment
+rm(list=ls())
+
+#Buscamos nuestro propio directorio
+getwd()
+
+#Fijamos nuestro directorio
+setwd("D:/SANTIAGO/OneDrive/Documentos/2022 Ayudantía UAH A. González Estadística R")
+```
+
+\normalsize
+
+## Tipos de variables en R
+
+\scriptsize
+
+```{r, echo=TRUE}
+load("BBDD/cc2.Rdata")
+#recuerden que en su propio computador la base puede estar en un lugar distinto
+```
+
+\normalsize
+
+- Usaremos una muestra de 374 casos elegidos al azar de la III Encuesta Nacional de Participación y Consumo Cultural (2009), con preguntas sobre lectura.
+
+## Tipos de variables en R
+
+- La base de datos contiene las siguientes variables: 
+  - `folio` (identificador).
+  - `SEL_Sexo` (quizá versiones más actualizadas preguntan por género).
+  - `SEL_Edad` (edad como valor numérico).
+  - `SEL_NEduc` (nivel educativo: grado más alto alcanzado: **(1) básica**; **(2) media**; **(3) universitaria/técnica**).
+  - `libros_dummy`: *m6_64: Con excepción de textos escolares y considerando libros usados o nuevos, ¿ha leído usted algún libro en los últimos 12 meses?* (variable dicotómica)
+  - `libros_numero`: *m6_66: En los últimos 12 meses, ¿cuántos libros ha leído?* (variable numérica)
+  - `libros_frecuencia`: *m6_67: Sin considerar textos escolares, ¿con qué frecuencia acostumbra leer libros?* (variable categórica con 4 categorías: **(1) "Todos o casi todos los días"**; **(2) "1 día por semana - 1 día al mes"**; **(3) "Menos de una vez al mes"**; **(4) "Menos de una vez al año"**).
+
+## Tipos de variables en R
+
+Si nos fijamos, la base viene con problemas:
+
+\scriptsize
+
+```{r, echo=TRUE}
+class(cc2$libros_numero) #debería ser un vector numérico, 
+#pero es un carácter
+
+class(cc2$SEL_NEduc) #debería ser un factor, 
+#pero es numérico
+
+class(cc2$libros_frecuencia) #debería ser un factor, 
+#pero es numérico
+```
+
+\normalsize
+
+## Tipos de variables en R
+
+Convertir de caracteres a números es sencillo:
+
+```{r, echo=TRUE}
+cc2$libros_numero <- as.numeric(cc2$libros_numero)
+
+class(cc2$libros_numero)
+```
+
+## Tipos de variables en R
+
+Convertir de números a factores es más trabajoso (comando `factor()`):
+
+  - Paso 1: definir los niveles ("levels");
+  
+  - Paso 2: definir etiquetas (mostrar texto en vez de números, sin alterar la estructura de la variable).
+
+```{r, echo=TRUE}
+cc2$SEL_NEduc <- factor(cc2$SEL_NEduc,
+levels = c(1,2,3),
+labels = c("Primaria",
+           "Secundaria",
+           "Superior"))
+```
+
+## Tipos de variables en R
+
+Convertir de números a factores es más trabajoso (comando `factor()`):
+
+  - Paso 1: definir los niveles ("levels");
+  
+  - Paso 2: definir etiquetas (mostrar texto en vez de números, sin alterar la estructura de la variable).
+
+```{r, echo=TRUE}
+cc2$libros_frecuencia <- factor(cc2$libros_frecuencia,
+levels = c(1,2,3, 4),
+labels = c("Todos o casi todos los días",
+           "1 día por semana - 1 día al mes",
+           "Menos de una vez al mes",
+           "Menos de una vez al año"))
+```
+
+## Tipos de variables en R
+
+```{r, echo=TRUE}
+class(cc2$SEL_NEduc)
+
+class(cc2$libros_frecuencia)
+
+table(cc2$SEL_NEduc)
+```
+
+## Tipos de variables en R
+
+\scriptsize
+
+```{r, echo=TRUE}
+table(cc2$libros_frecuencia)
+```
+
+\normalsize
+
+## Tipos de variables en R
+
+- Convertir vectores a clase de carácter se hace con el comando `as.character()`.
+
+- Por ejemplo:
+
+\scriptsize
+
+```{r, echo=TRUE}
+cc2$libros_numero <- as.character(cc2$libros_numero)
+
+class(cc2$libros_numero)
+
+cc2$libros_numero <- as.numeric(cc2$libros_numero)
+
+class(cc2$libros_numero)
+```
+
+# Visualización de datos
+
+## La importancia de visualizar siempre los datos
+
+\begin{figure}[H]
+\centering\includegraphics[keepaspectratio,width=\textwidth, height=.6\textheight]{Imágenes/img2_02_gorilla twitter.jpg}
+\end{figure}
+
+\small
+Yanai, I., & Lercher, M. (2020). A hypothesis is a liability. *Genome Biology, 21*(1). https://doi.org/10.1186/s13059-020-02133-w
+\normalsize
+
+## La importancia de visualizar siempre los datos
+
+\begin{figure}[H]
+\centering\includegraphics[keepaspectratio,width=\textwidth, height=.8\textheight]{Imágenes/img2_01_gorilla.png}
+\end{figure}
+
+## Repasar histogramas y gráficos de densidad
+
+Usaremos la base de datos `BABERUTH` de la librería `PASWR2` vistos en clases.
+
+Cada vez que "borramos todo" con `rm(list=ls())` debemos volver a fijar el directorio:
+
+\tiny
+
+```{r echo=TRUE}
+#Borramos objetos del environment
+rm(list=ls())
+
+#Buscamos nuestro propio directorio
+getwd()
+
+#Fijamos nuestro directorio
+setwd("D:/SANTIAGO/OneDrive/Documentos/2022 Ayudantía UAH A. González Estadística R")
+
+#Librería y base de datos
+library(PASWR2)
+data(BABERUTH)
+```
+
+\normalsize
+
+## Repasar histogramas y gráficos de densidad
+
+\scriptsize
+Debemos recordar que los histogramas pueden usar distintos anchos de columna según la configuración que usemos.
+\normalsize
+
+```{r, echo=TRUE, include=TRUE, out.width = '40%'}
+x <- BABERUTH$hr[7:21]   # guardamos las observaciones 
+#de juegos en los NYY
+
+#breaks = "Sturges"
+hist(x, breaks = "Sturges", main = "Sturges", 
+     xlab = "HR", 
+     col = "blue")
+```
+
+## Repasar histogramas y gráficos de densidad
+
+\scriptsize
+Recordar que los histogramas pueden usar distintos anchos de columna según la configuración que usemos.
+\normalsize
+
+```{r, echo=TRUE, include=TRUE, out.width = '55%'}
+#breaks = "FD"
+hist(x, breaks = "FD", main = "FD", 
+     xlab = "HR", 
+     col = "red")
+```
+
+## Repasar histogramas y gráficos de densidad
+
+\scriptsize
+Recordar que los histogramas pueden usar distintos anchos de columna según la configuración que usemos.
+\normalsize
+
+```{r, echo=TRUE, include=TRUE, out.width = '55%'}
+#breaks = "Scott"
+hist(x, breaks = "Scott", main = "Scott", 
+     xlab = "HR", 
+     col = "yellow")
+```
+
+## Un ejemplo más problemático
+
+\scriptsize
+
+```{r, echo=TRUE, eval=FALSE}
+library(MASS)
+data(geyser) #la base "geyser" es de la librería "MASS"
+
+with(data = geyser, hist(duration, breaks=3, #ancho de columna
+                         freq = FALSE, 
+                         ylim = c(0, 1), 
+                         col = "pink")) 
+
+with(data = geyser, hist(duration, breaks=6, #ancho de columna
+                         freq = FALSE, 
+                         ylim = c(0, 1), 
+                         col = "pink")) 
+
+with(data = geyser, hist(duration, breaks=12, #ancho de columna 
+                         freq = FALSE, 
+                         ylim = c(0, 1), 
+                         col = "pink"))
+
+with(data = geyser, hist(duration, breaks=24, #ancho de columna 
+                         freq = FALSE, 
+                         ylim = c(0, 1), 
+                         col = "pink")) 
+```
+
+\normalsize
+
+## Un ejemplo más problemático
+
+```{r, echo=FALSE, include=FALSE, eval=TRUE, message=FALSE, warning=FALSE}
+library(MASS)
+data(geyser)
+
+pdf(file="D:/SANTIAGO/Figuras Latex/fig02_duration_plot1.pdf")
+with(data = geyser, hist(duration, breaks=3, freq = FALSE, ylim = c(0, 1), col = "pink"))
+dev.off()
+
+pdf(file="D:/SANTIAGO/Figuras Latex/fig02_duration_plot2.pdf")
+with(data = geyser, hist(duration, breaks=6, freq = FALSE, ylim = c(0, 1), col = "pink"))
+dev.off()
+
+pdf(file="D:/SANTIAGO/Figuras Latex/fig02_duration_plot3.pdf")
+with(data = geyser, hist(duration, breaks=12, freq = FALSE, ylim = c(0, 1), col = "pink"))
+dev.off()
+
+pdf(file="D:/SANTIAGO/Figuras Latex/fig02_duration_plot4.pdf")
+with(data = geyser, hist(duration, breaks=24, freq = FALSE, ylim = c(0, 1), col = "pink"))
+dev.off()
+```
+
+```{r, echo=FALSE, include=FALSE, eval=FALSE, message=FALSE, warning=FALSE}
+#library(gridExtra)
+#grid.arrange(stGraphs, FGraph, nrow=1)
+#grid.arrange(
+#  grobs = gl,
+#  widths = c(2, 1, 1),
+#  layout_matrix = rbind(c(1, 2, NA),
+#                        c(3, 3, 4))
+#)
+```
+
+```{r, echo=FALSE,out.width="45%", out.height="40%",fig.show='hold',fig.align='center'}
+knitr::include_graphics(c("D:/SANTIAGO/Figuras Latex/fig02_duration_plot1.pdf",
+                          "D:/SANTIAGO/Figuras Latex/fig02_duration_plot2.pdf",
+                          "D:/SANTIAGO/Figuras Latex/fig02_duration_plot3.pdf",
+                          "D:/SANTIAGO/Figuras Latex/fig02_duration_plot4.pdf"))
+```
+
+## Un ejemplo más problemático
+
+¿Por qué es problemático?
+
+Porque usamos los mismos datos y el mismo tipo de gráfico (histograma), pero sólo cambiando el ancho de columna, pareciera que se trata de distribuciones diferentes (¡cuando no es así!).
+
+Una manera de resolver esto es usando gráficos y curvas de densidad (hay una explicación más detallada en la presentación usada en la clase 2).
+
+## Aplicando una curva de densidad al histograma
+
+\tiny
+
+```{r, echo=TRUE, eval=FALSE}
+with(data = geyser, hist(duration, breaks=3, #ancho de columna
+                         freq = FALSE, ylim = c(0, 1), 
+                         col = "pink")) 
+with(data = geyser, lines(density(duration), col="red", 
+                          lwd=2))
+
+with(data = geyser, hist(duration, breaks=6, #ancho de columna
+                         freq = FALSE, ylim = c(0, 1), 
+                         col = "pink")) 
+with(data = geyser, lines(density(duration), col="red", 
+                          lwd=2))
+
+with(data = geyser, hist(duration, breaks=12, #ancho de columna 
+                         freq = FALSE, ylim = c(0, 1), 
+                         col = "pink"))
+with(data = geyser, lines(density(duration), col="red", 
+                          lwd=2))
+
+with(data = geyser, hist(duration, breaks=24, #ancho de columna 
+                         freq = FALSE, ylim = c(0, 1), 
+                         col = "pink")) 
+with(data = geyser, lines(density(duration), col="red", 
+                          lwd=2))
+```
+
+\normalsize
+
+```{r, echo=FALSE, include=FALSE, eval=TRUE, message=FALSE, warning=FALSE}
+pdf(file="D:/SANTIAGO/Figuras Latex/fig02_duration_plot1_density.pdf")
+with(data = geyser, hist(duration, breaks=3, freq = FALSE, ylim = c(0, 1), col = "pink"))
+with(data = geyser, lines(density(duration), col="red", 
+                          lwd=2))
+dev.off()
+
+pdf(file="D:/SANTIAGO/Figuras Latex/fig02_duration_plot2_density.pdf")
+with(data = geyser, hist(duration, breaks=6, freq = FALSE, ylim = c(0, 1), col = "pink"))
+with(data = geyser, lines(density(duration), col="red", 
+                          lwd=2))
+dev.off()
+
+pdf(file="D:/SANTIAGO/Figuras Latex/fig02_duration_plot3_density.pdf")
+with(data = geyser, hist(duration, breaks=12, freq = FALSE, ylim = c(0, 1), col = "pink"))
+with(data = geyser, lines(density(duration), col="red", 
+                          lwd=2))
+dev.off()
+
+pdf(file="D:/SANTIAGO/Figuras Latex/fig02_duration_plot4_density.pdf")
+with(data = geyser, hist(duration, breaks=24, freq = FALSE, ylim = c(0, 1), col = "pink"))
+with(data = geyser, lines(density(duration), col="red", 
+                          lwd=2))
+dev.off()
+```
+
+## Aplicando una curva de densidad al histograma
+
+```{r, echo=FALSE,out.width="45%", out.height="40%",fig.show='hold',fig.align='center'}
+knitr::include_graphics(c("D:/SANTIAGO/Figuras Latex/fig02_duration_plot1_density.pdf",
+                          "D:/SANTIAGO/Figuras Latex/fig02_duration_plot2_density.pdf",
+                          "D:/SANTIAGO/Figuras Latex/fig02_duration_plot3_density.pdf",
+                          "D:/SANTIAGO/Figuras Latex/fig02_duration_plot4_density.pdf"))
+```
+## Gráfico de densidad sin histograma
+
+\scriptsize
+
+```{r, echo=TRUE, eval=FALSE}
+with(data = geyser, 
+     plot(density(duration), 
+          col="red", lwd=2, main="Densidad de 'duration'"))
+```
+
+\normalsize
+
+```{r, echo=FALSE, include=FALSE, eval=TRUE, message=FALSE, warning=FALSE}
+pdf(file="D:/SANTIAGO/Figuras Latex/fig02_duration_plot5_density sin hist.pdf")
+with(data = geyser, plot(density(duration), col="red", lwd=2, main="Densidad de 'duration'"))
+dev.off()
+```
+
+```{r, echo=FALSE, out.width="70%", out.height="70%", fig.show='hold',fig.align='center'}
+knitr::include_graphics(c("D:/SANTIAGO/Figuras Latex/fig02_duration_plot5_density sin hist.pdf"))
+```
