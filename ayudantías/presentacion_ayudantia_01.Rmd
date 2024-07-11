@@ -33,7 +33,7 @@ knitr::opts_chunk$set(echo = FALSE, include = TRUE, warning = FALSE, message = F
 ```{r preambulo}
 rm(list=ls())
 
-setwd("D:/SANTIAGO/OneDrive/Documentos/2022 Ayudantía UAH A. González Estadística R")
+source(paste0(rprojroot::find_rstudio_root_file(),"/auxiliar/aux_dirs_input.R"))
 ```
 
 ## Presentación
@@ -374,7 +374,7 @@ matriz1
 - Veamos una muestra de 373 casos elegidos al azar de la III Encuesta Nacional de Participación y Consumo Cultural (2009). 
 
 ```{r, echo=FALSE}
-load("BBDD/consumo.cultural.Rdata")
+load(file_data_consumo_cultural)
 
 cc <- as.data.frame(consumo.cultural[ ,c("folio",
                                          "SEL_Sexo","SEL_Edad",
@@ -453,7 +453,7 @@ labels = c("Primaria",
 
 cc1a <- na.omit(cc1)
 
-save(cc1a, file = "BBDD/cc1.RData")
+save(cc1a, file = "cc1.RData")
 
 rm(consumo.cultural)
 rm(cc)
@@ -491,7 +491,7 @@ getwd()
 \tiny
 
 ```{r, echo=TRUE, eval=FALSE}
-setwd("D:/SANTIAGO/OneDrive/Documentos/2022 Ayudantía UAH A. González Estadística R")
+setwd("C:/GitHub/uah_ayudantia_estadistica_2022/ayudantías")
 ```
 
 \normalsize
@@ -499,7 +499,7 @@ setwd("D:/SANTIAGO/OneDrive/Documentos/2022 Ayudantía UAH A. González Estadís
 ## Tipos de objetos en R: bases de datos (data frames)
 
 ```{r, echo=TRUE}
-load("BBDD/cc1.Rdata")
+load("cc1.Rdata")
 ```
 
 - Decirle a R dónde buscar el dataframe en mi computador.
