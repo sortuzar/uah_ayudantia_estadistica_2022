@@ -27,13 +27,25 @@ header-includes:
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = FALSE, include = TRUE, warning = FALSE, message = FALSE)
+knitr::opts_chunk$set(echo = FALSE, 
+                      include = TRUE, 
+                      warning = FALSE, 
+                      message = FALSE,
+                      eval = TRUE)
 ```
 
 ```{r preambulo}
+# Limpiar environment ----------------------------------------------------------
 rm(list=ls())
 
-source(paste0(rprojroot::find_rstudio_root_file(),"/auxiliar/aux_dirs_input.R"))
+# Cargar librerías -------------------------------------------------------------
+library(knitr)
+
+# Fijar directorios ------------------------------------------------------------
+folder_project <- rprojroot::find_rstudio_root_file()
+folder_here <- paste0(folder_project,"/ayudantías")
+folder_img <- paste0(folder_here,"/input/img")
+source(paste0(folder_project,"/auxiliar/aux_dirs_input.R"))
 ```
 
 ## Presentación
@@ -249,9 +261,9 @@ vector1 + vector2
 
 R entregará el siguiente mensaje:
 
-\begin{figure}[H]
-\centering\includegraphics[keepaspectratio,width=\textwidth, height=.8\textheight]{Imágenes/img1_13.png}
-\end{figure}
+```{r, echo=FALSE}
+knitr::include_graphics(paste0(folder_img,"/img1_13.png"))
+```
 
 ## Tipos de objetos en R: vectores
 
