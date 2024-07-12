@@ -1,0 +1,75 @@
+---
+title: Guía Ayudantía 3, parte 1
+subtitle: Estadística descriptiva-R | prof. Alejandro González | FEN-UAH
+author: Ayudante Santiago Ortúzar
+date: "`r as.Date('2022-04-22')`" #"`r Sys.time()`"
+date-format: "YYYY-MM-DD" 
+lang: es # español
+execute: 
+  echo: false
+format: 
+  pdf:
+    # Formato básico
+    documentclass: article      # formato de artículo
+    classoption: letter         # papel tamaño carta
+    # Secciones
+    number-sections: true       # secciones numeradas
+    number-depth: 4             # 4 dígitos en numeración de secciones
+    # Captions
+    cap-location: top           # ubicación captions tablas y figuras
+    # Fuente y espaciado
+    mainfont: TimesNewRomanPSMT # letra
+    whitespace: big             # espaciado entre párrafos
+    linestretch: 1              # espaciado entre líneas
+    indent: true                # sangría
+    # Colores links y referencias
+    colorlinks: true            # links con colores
+    urlcolor: blue              # links con colores
+    filecolor: blue             # colores pero no sé para qué tipo de archivos
+    # Figuras
+    fig-pos: 'H'                # posición de figuras
+    fig-align: center           # alinear figuras
+---
+
+En esta guía, usted trabajará con el data frame `starwars`, de la librería `dplyr`.
+
+Para usar este dataframe, siga los siguientes pasos:
+
+-	Limpie su environment:
+
+```{r}
+#| message: false
+#| warning: false
+#| echo: true
+#| include: true
+#| eval: false
+rm(list=ls())
+```
+
+
+-	Fije su directorio con el comando setwd() (puede usar ´getwd()´ para buscar la ruta de forma más simple).
+
+-	Instale el paquete dplyr:
+install.packages(dplyr)
+Una vez que lo instale, anteponga el signo #, ya que no necesita instalar el paquete más de una vez:
+#install.packages(dplyr)
+-	Cargue la librería dplyr:
+library(dplyr)
+-	Cargue el data frame starwars:
+data(starwars)
+-	Puede visualizar el dataframe usando head(starwars), View(starwars) o print(starwars).
+
+1.	A partir del data frame ‘star wars’, cree un nuevo data frame, llamado ‘starwars1’ donde conserve información sólo para los siguientes personajes: C-3PO; Chewbacca; Darth Vader; Jabba Desilijic Tiure; Luke Skywalker; Obi-Wan Kenobi; R2-D2; Yoda. Los personajes están identificados en la variable ‘name’.
+2.	A partir del data frame ‘starwars1’, cree un nuevo data frame donde los personajes estén ordenados de acuerdo a su altura, en forma descendente. Llame al data frame ‘starwars2’.
+3.	Elimine los data frames ‘starwars’ y ‘starwars1’ de su environment.
+4.	A partir del data frame ‘starwars2’ cree un nuevo data frame, ‘starwars3’, dónde sólo estén los personajes que miden más de 2 metros. La variable ‘height’ registra la altura de los personajes en centímetros.
+5.	A partir del data frame ‘starwars2’ cree un nuevo data frame donde se conserven todos los personajes, pero sólo las siguientes variables: ‘name’, ‘height’, ‘mass’, ‘birth_year’, ‘sex’, ‘homeworld’. Llame al data frame ‘starwars4’.
+6.	Elimine los data frames ‘starwars2’ y ‘starwars3’ de su environment.
+7.	Utilizando el data frame ‘starwars4’, resuelva los siguientes ejercicios:
+a.	¿Cuál es la edad de Yoda y en qué planeta nació? Cree un data frame que contenga sólo el nombre, la edad y el planeta en que nació Yoda (la variable de edad es ‘birth_year’ y la del planeta de nacimiento es ‘homeworld’). Llame ‘yoda’ al data frame.
+b.	¿Cuánto mide Darth Vader? Cree un data frame que contenga sólo el nombre y la altura de Darth Vader. Llame ‘vader’ al data frame.
+c.	¿Cuál es el sexo, la edad y el peso de Jabba Desilijic Tiure (más conocido como Jabba the Hutt)? Cree un data frame que contenga sólo el nombre, el sexo, la edad y el peso del majestuoso Jabba, en un data frame llamado ‘jabba’.
+d.	Cree un nuevo data frame que sólo tenga la información sobre los personajes que nacieron en el planeta Tatooine. Llame a este data frame ‘tatooine’.
+e.	¿Cuál es la diferencia de edad entre Obi-Wan Kenobi y Darth Vader?
+i.	Para determinar esto, siga los siguientes pasos. Primero, almacene la edad de Obi-Wan Kenobi y Darth Vader como objetos (valores numéricos), llamados ‘edad_obiwan’ y ‘edad_vader’ respectivamente.
+ii.	Luego, reste ambos objetos utilizando el comando que usted prefiera.
