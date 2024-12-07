@@ -49,10 +49,10 @@ po/*~
 rsconnect/
 
 # BBDD creadas
-ayudantías/cc1.RData
+ayudantías_estadística_descriptiva/cc1.RData
 
-# Archivos PDF
-ayudantías/presentacion_ayudantia_01.pdf
+# Archivos PDF en ayudantías de estadística descriptiva
+ayudantías_estadística_descriptiva/presentacion_ayudantia_01.pdf
 
 ayudantías/guia_ayudantia_03_pt1.pdf
 
