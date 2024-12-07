@@ -53,7 +53,7 @@ tinytex::tlmgr_install(
 
 # Fijar directorios ------------------------------------------------------------
 folder_project <- rprojroot::find_rstudio_root_file()
-folder_here <- paste0(folder_project,"/ayudantías_estadística_descriptiva")
+folder_here <- paste0(folder_project,"/ayudantias_estadistica_descriptiva")
 folder_img <- paste0(folder_here,"/input/img")
 source(paste0(folder_project,"/auxiliar/aux_dirs_input.R"))
 ```
@@ -882,3 +882,7 @@ En inglés:
 - La lectura es de carácter voluntario y no se evaluará.
 
 - Se recomienda leer 1 de las lecturas sugeridas y revisar las complementarias como material de consulta.
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE, include=FALSE}
+file.remove(paste0(folder_here,"/cc1.RData")) # eliminar df que creamos antes
+```
