@@ -53,7 +53,6 @@ tinytex::tlmgr_install(
 
 # Fijar directorios ------------------------------------------------------------
 folder_project <- rprojroot::find_rstudio_root_file()
-setwd(folder_project)
 folder_here <- paste0(folder_project,"/ayudantías_estadística_descriptiva")
 folder_img <- paste0(folder_here,"/input/img")
 source(paste0(folder_project,"/auxiliar/aux_dirs_input.R"))

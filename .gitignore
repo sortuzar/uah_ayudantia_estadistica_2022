@@ -48,11 +48,10 @@ po/*~
 # RStudio Connect folder
 rsconnect/
 
-# BBDD creadas
-ayudantías_estadística_descriptiva/cc1.RData
-
 # Archivos PDF en ayudantías de estadística descriptiva
-ayudantías_estadística_descriptiva/presentacion_ayudantia_01.pdf
+ayudantias_estadistica_descriptiva/presentacion_ayudantia_01.pdf
+ayudantias_estadistica_descriptiva/guia_ayudantia_03_pt1.pdf
 
-ayudantías/guia_ayudantia_03_pt1.pdf
+# Archivos .RData en ayudantías de estadística descriptiva
+ayudantias_estadistica_descriptiva/cc1.RData
 
