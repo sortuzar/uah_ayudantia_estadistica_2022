@@ -53,6 +53,7 @@ tinytex::tlmgr_install(
 
 # Fijar directorios ------------------------------------------------------------
 folder_project <- rprojroot::find_rstudio_root_file()
+setwd(folder_project)
 folder_here <- paste0(folder_project,"/ayudantías_estadística_descriptiva")
 folder_img <- paste0(folder_here,"/input/img")
 source(paste0(folder_project,"/auxiliar/aux_dirs_input.R"))
@@ -475,7 +476,7 @@ labels = c("Primaria",
 
 cc1a <- na.omit(cc1)
 
-save(cc1a, file = "cc1.RData")
+save(cc1a, file = paste0(folder_here,"/cc1.RData"))
 
 rm(consumo.cultural)
 rm(cc)
@@ -512,8 +513,8 @@ getwd()
 
 \tiny
 
-```{r, echo=TRUE, eval=FALSE}
-setwd("C:/GitHub/uah_ayudantia_estadistica_2022/ayudantías")
+```{r, eval=FALSE, echo=TRUE}
+setwd("C:/GitHub/uah_ayudantia_estadistica_2022/ayudantías_estadística_descriptiva")
 ```
 
 \normalsize
