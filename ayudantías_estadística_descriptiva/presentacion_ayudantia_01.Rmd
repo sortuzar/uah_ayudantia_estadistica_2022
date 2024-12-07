@@ -40,10 +40,20 @@ rm(list=ls())
 
 # Cargar librerías -------------------------------------------------------------
 library(knitr)
+library(tinytex)
+library(rprojroot)
+tinytex::tlmgr_install(
+  pkgs=
+    c("babel",
+      "caption",
+      "hyperref",
+      "float",
+      "adjustbox",
+      "xcolor"))
 
 # Fijar directorios ------------------------------------------------------------
 folder_project <- rprojroot::find_rstudio_root_file()
-folder_here <- paste0(folder_project,"/ayudantías")
+folder_here <- paste0(folder_project,"/ayudantías_estadística_descriptiva")
 folder_img <- paste0(folder_here,"/input/img")
 source(paste0(folder_project,"/auxiliar/aux_dirs_input.R"))
 ```
