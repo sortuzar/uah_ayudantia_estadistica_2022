@@ -30,11 +30,29 @@ knitr::opts_chunk$set(echo = FALSE, include = TRUE, warning = FALSE, message = F
 ```
 
 ```{r preambulo}
+# Limpiar environment ----------------------------------------------------------
 rm(list=ls())
 
-setwd("D:/SANTIAGO/OneDrive/Documentos/2022 Ayudantía UAH A. González Estadística R")
-```
+# Cargar librerías -------------------------------------------------------------
+library(knitr)
+library(tinytex)
+library(rprojroot)
+tinytex::tlmgr_install(
+  pkgs=
+    c("babel",
+      "caption",
+      "hyperref",
+      "float",
+      "adjustbox",
+      "xcolor"))
 
+# Fijar directorios ------------------------------------------------------------
+carpeta_proyecto <- rprojroot::find_rstudio_root_file()
+carpeta_curso_descriptiva <- paste0(carpeta_proyecto,"/ayudantias_estadistica_descriptiva")
+carpeta_img <- paste0(carpeta_curso_descriptiva,"/input/img") 
+carpeta_aqui <- paste0(carpeta_curso_descriptiva,"/ayudantia01")
+source(paste0(carpeta_proyecto,"/auxiliar/aux_dirs_input.R"))
+```
 
 
 # Introducción a R
@@ -92,7 +110,9 @@ setwd("D:/SANTIAGO/OneDrive/Documentos/2022 Ayudantía UAH A. González Estadís
 ## Descargando R base
 
 \begin{figure}[H]
-\centering\includegraphics[keepaspectratio,width=\textwidth, height=.8\textheight]{Imágenes/img1_1.png}\caption{R Paso 1}\label{rpaso1}
+\centering
+\includegraphics[keepaspectratio,width=\textwidth, height=.8\textheight]{input/img/img1_1.png}
+\caption{R Paso 1}\label{rpaso1}
 \end{figure}
 
 - Para este ejemplo usaremos Windows.
@@ -100,13 +120,17 @@ setwd("D:/SANTIAGO/OneDrive/Documentos/2022 Ayudantía UAH A. González Estadís
 ## Descargando R base
 
 \begin{figure}[H]
-\centering\includegraphics[keepaspectratio,width=\textwidth, height=.8\textheight]{Imágenes/img1_2.png}\caption{R Paso 2}\label{rpaso2}
+\centering
+\includegraphics[keepaspectratio,width=\textwidth, height=.8\textheight]{input/img/img1_2.png}
+\caption{R Paso 2}\label{rpaso2}
 \end{figure}
 
 ## Descargando R base
 
 \begin{figure}[H]
-\centering\includegraphics[keepaspectratio,width=\textwidth, height=.8\textheight]{Imágenes/img1_3.png}\caption{R Paso 3}\label{rpaso3}
+\centering
+\includegraphics[keepaspectratio,width=\textwidth, height=.8\textheight]{input/img/img1_3.png}
+\caption{R Paso 3}\label{rpaso3}
 \end{figure}
 
 ## Descargando R base
@@ -114,7 +138,9 @@ setwd("D:/SANTIAGO/OneDrive/Documentos/2022 Ayudantía UAH A. González Estadís
 - Ya con R base descargado, procedemos a la instalación.
 
 \begin{figure}[H]
-\centering\includegraphics[keepaspectratio,width=\textwidth, height=.6\textheight]{Imágenes/img1_4.png}\caption{R Paso 4}\label{rpaso4}
+\centering
+\includegraphics[keepaspectratio,width=\textwidth, height=.6\textheight]{input/img/img1_4.png}
+\caption{R Paso 4}\label{rpaso4}
 \end{figure}
 
 ## Instalando R base
@@ -134,19 +160,25 @@ setwd("D:/SANTIAGO/OneDrive/Documentos/2022 Ayudantía UAH A. González Estadís
 ## Descargando RStudio
 
 \begin{figure}[H]
-\centering\includegraphics[keepaspectratio,width=\textwidth, height=.8\textheight]{Imágenes/img1_5.png}\caption{RStudio Paso 1}\label{rstudiopaso1}
+\centering
+\includegraphics[keepaspectratio,width=\textwidth, height=.8\textheight]{input/img/img1_5.png}
+\caption{RStudio Paso 1}\label{rstudiopaso1}
 \end{figure}
 
 ## Descargando RStudio
 
 \begin{figure}[H]
-\centering\includegraphics[keepaspectratio,width=\textwidth, height=.8\textheight]{Imágenes/img1_6.png}\caption{RStudio Paso 2}\label{rstudiopaso2}
+\centering
+\includegraphics[keepaspectratio,width=\textwidth, height=.8\textheight]{input/img/img1_6.png}
+\caption{RStudio Paso 2}\label{rstudiopaso2}
 \end{figure}
 
 ## Descargando RStudio
 
 \begin{figure}[H]
-\centering\includegraphics[keepaspectratio,width=\textwidth, height=.6\textheight]{Imágenes/img1_7.png}\caption{RStudio Paso 3}\label{rstudiopaso3}
+\centering
+\includegraphics[keepaspectratio,width=\textwidth, height=.6\textheight]{input/img/img1_7.png}
+\caption{RStudio Paso 3}\label{rstudiopaso3}
 \end{figure}
 
 - Para este ejemplo usaremos Windows.
@@ -154,7 +186,9 @@ setwd("D:/SANTIAGO/OneDrive/Documentos/2022 Ayudantía UAH A. González Estadís
 ## Descargando RStudio
 
 \begin{figure}[H]
-\centering\includegraphics[keepaspectratio,width=\textwidth, height=.8\textheight]{Imágenes/img1_8.png}\caption{RStudio Paso 4}\label{rstudiopaso4}
+\centering
+\includegraphics[keepaspectratio,width=\textwidth, height=.8\textheight]{input/img/img1_8.png}
+\caption{RStudio Paso 4}\label{rstudiopaso4}
 \end{figure}
 
 ## Instalando RStudio
@@ -166,14 +200,16 @@ setwd("D:/SANTIAGO/OneDrive/Documentos/2022 Ayudantía UAH A. González Estadís
 - Cuando abramos RStudio veremos 4 ventanas o pestañas.
 
 \begin{figure}[H]
-\centering\includegraphics[keepaspectratio,width=\textwidth, height=.7\textheight]{Imágenes/img1_9.png}\caption{Usando RStudio (imagen prof. Ignacio Madero)}\label{rstudiousando1}
+\centering
+\includegraphics[keepaspectratio,width=\textwidth, height=.7\textheight]{input/img/img1_9.png}
+\caption{Usando RStudio (imagen prof. Ignacio Cabib)}\label{rstudiousando1}
 \end{figure}
 
 ## Consola y hoja de sintaxis
 
 \begin{columns}[t]
     \begin{column}{.65\textwidth}
-      \adjincludegraphics[width=1.025\linewidth, valign=t]{Imágenes/img1_10.png}
+      \adjincludegraphics[width=1.025\linewidth, valign=t]{input/img/img1_10.png}
     \end{column}
     \begin{column}{.5\textwidth}
       \begin{itemize}
@@ -187,7 +223,7 @@ setwd("D:/SANTIAGO/OneDrive/Documentos/2022 Ayudantía UAH A. González Estadís
 
 \begin{columns}[t]
     \begin{column}{.65\textwidth}
-      \adjincludegraphics[width=1.025\linewidth, valign=t]{Imágenes/img1_10.png}
+      \adjincludegraphics[width=1.025\linewidth, valign=t]{input/img/img1_10.png}
     \end{column}
     \begin{column}{.5\textwidth}
       \begin{itemize}
@@ -201,7 +237,7 @@ setwd("D:/SANTIAGO/OneDrive/Documentos/2022 Ayudantía UAH A. González Estadís
 
 \begin{columns}[t]
     \begin{column}{.65\textwidth}
-      \adjincludegraphics[width=1.025\linewidth, valign=t]{Imágenes/img1_10.png}
+      \adjincludegraphics[width=1.025\linewidth, valign=t]{input/img/img1_10.png}
     \end{column}
     \begin{column}{.5\textwidth}
       \begin{itemize}
@@ -215,7 +251,7 @@ setwd("D:/SANTIAGO/OneDrive/Documentos/2022 Ayudantía UAH A. González Estadís
 
 \begin{columns}[t]
     \begin{column}{.65\textwidth}
-      \adjincludegraphics[width=1.025\linewidth, valign=t]{Imágenes/img1_11.png}
+      \adjincludegraphics[width=1.025\linewidth, valign=t]{input/img/img1_11.png}
     \end{column}
     \begin{column}{.5\textwidth}
       \begin{itemize}
@@ -229,7 +265,7 @@ setwd("D:/SANTIAGO/OneDrive/Documentos/2022 Ayudantía UAH A. González Estadís
 
 \begin{columns}[t]
     \begin{column}{.5\textwidth}
-      \adjincludegraphics[width=1.025\linewidth, valign=t]{Imágenes/img1_11.png}
+      \adjincludegraphics[width=1.025\linewidth, valign=t]{input/img/img1_11.png}
     \end{column}
     \begin{column}{.65\textwidth}
       \begin{itemize}
@@ -244,7 +280,7 @@ setwd("D:/SANTIAGO/OneDrive/Documentos/2022 Ayudantía UAH A. González Estadís
 
 \begin{columns}[t]
     \begin{column}{.65\textwidth}
-      \adjincludegraphics[width=1.025\linewidth, valign=t]{Imágenes/img1_12.png}
+      \adjincludegraphics[width=1.025\linewidth, valign=t]{input/img/img1_12.png}
     \end{column}
     \begin{column}{.5\textwidth}
       \begin{itemize}
