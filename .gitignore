@@ -49,6 +49,7 @@ po/*~
 rsconnect/
 
 # Archivos PDF en ayudantías de estadística descriptiva
+ayudantias_estadistica_descriptiva/tutorial_instalacion_R.pdf
 ayudantias_estadistica_descriptiva/ayudantia01/presentacion_ayudantia_01.pdf
 ayudantias_estadistica_descriptiva/ayudantia03/guia_ayudantia_03_pt1.pdf
 
