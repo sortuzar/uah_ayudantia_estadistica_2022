@@ -25,6 +25,8 @@ header-includes:
   - \usepackage[export]{adjustbox}
   - \usepackage{xcolor}
   - \setbeamertemplate{footline}[frame number]
+editor_options: 
+  chunk_output_type: console
 ---
 
 ```{r setup, include=FALSE}
