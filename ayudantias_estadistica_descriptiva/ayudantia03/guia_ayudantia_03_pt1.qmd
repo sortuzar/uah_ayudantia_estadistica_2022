@@ -6,7 +6,12 @@ date: "`r as.Date('2022-04-22')`" #"`r Sys.time()`"
 date-format: "YYYY-MM-DD" 
 lang: es # español
 execute: 
+  eval: true
   echo: false
+  warning: false
+  error: false
+  include: false
+  output: false
 format: 
   pdf:
     # Formato básico
@@ -38,11 +43,9 @@ Para usar este dataframe, siga los siguientes pasos:
 -	Limpie su environment:
 
 ```{r}
-#| message: false
-#| warning: false
+#| eval: false
 #| echo: true
 #| include: true
-#| eval: false
 rm(list=ls())
 ```
 
