@@ -2,11 +2,16 @@
 title: Guía Ayudantía 3, parte 1
 subtitle: Estadística descriptiva-R | prof. Alejandro González | FEN-UAH
 author: Ayudante Santiago Ortúzar
-date: "`r as.Date('2022-04-22')`" #"`r Sys.time()`"
+date: "`r as.Date('2022-04-01')`" #"`r Sys.time()`"
 date-format: "YYYY-MM-DD" 
 lang: es # español
 execute: 
+  eval: true
   echo: false
+  warning: false
+  error: false
+  include: false
+  output: false
 format: 
   pdf:
     # Formato básico
@@ -31,11 +36,22 @@ format:
     fig-align: center           # alinear figuras
 ---
 
-Descriptive Statistics in R: https://www.r-bloggers.com/2021/10/descriptive-statistics-in-r-3/amp/ 
-Comparing Distributions: https://www.r-bloggers.com/2021/12/comparing-distributions/ 
-Four R packages for Automated Exploratory Data Analysis you might have missed: https://towardsdatascience.com/four-r-packages-for-automated-exploratory-data-analysis-you-might-have-missed-c38b03d4ee16 
-Finally understanding what “statistical significance” and p-values mean: A simple example (with R code): https://www.r-bloggers.com/2022/01/finally-understanding-what-statistical-significance-and-p-values-mean-a-simple-example-with-r-code/ 
-Contingency tables in R: https://www.r-bloggers.com/2020/12/contingency-tables-in-r/
-How to use pipes to clean up your R code: https://www.r-bloggers.com/2022/03/how-to-use-pipes-to-clean-up-your-r-code/amp/ 
-Comparto link donde data science UC, ha subido distintos videos sobre cómo hacer web scraping, visualización de datos , y análisis de texto en R: https://vimeo.com/user105597673 
-A *simple* introduction to ggplot2 (for plotting your data!): https://www.r-bloggers.com/2022/04/a-simple-introduction-to-ggplot2-for-plotting-your-data/amp/ 
+```{r}
+rm(list=ls())
+```
+
+- Descriptive Statistics in R: \url{https://www.r-bloggers.com/2021/10/descriptive-statistics-in-r-3/amp/}
+
+- Comparing Distributions: \url{https://www.r-bloggers.com/2021/12/comparing-distributions/}
+
+- Four R packages for Automated Exploratory Data Analysis you might have missed: \url{https://towardsdatascience.com/four-r-packages-for-automated-exploratory-data-analysis-you-might-have-missed-c38b03d4ee16}
+
+- Finally understanding what “statistical significance” and p-values mean: A simple example (with R code): \url{https://www.r-bloggers.com/2022/01/finally-understanding-what-statistical-significance-and-p-values-mean-a-simple-example-with-r-code/} (no tengo idea por qué subí esto en un curso de estadística descriptiva muy introductorio...)
+
+- Contingency tables in R: \url{https://www.r-bloggers.com/2020/12/contingency-tables-in-r/}
+
+- How to use pipes to clean up your R code: \url{https://www.r-bloggers.com/2022/03/how-to-use-pipes-to-clean-up-your-r-code/amp/}
+
+- Comparto link donde data science UC, ha subido distintos videos sobre cómo hacer web scraping, visualización de datos , y análisis de texto en R: \url{https://vimeo.com/user105597673}
+
+- A *simple* introduction to ggplot2 (for plotting your data!): \url{https://www.r-bloggers.com/2022/04/a-simple-introduction-to-ggplot2-for-plotting-your-data/amp/}
