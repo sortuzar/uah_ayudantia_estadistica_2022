@@ -52,10 +52,11 @@ tinytex::tlmgr_install(
       "xcolor"))
 
 # Fijar directorios ------------------------------------------------------------
-folder_project <- rprojroot::find_rstudio_root_file()
-folder_here <- paste0(folder_project,"/ayudantias_estadistica_descriptiva")
-folder_img <- paste0(folder_here,"/input/img")
-source(paste0(folder_project,"/auxiliar/aux_dirs_input.R"))
+carpeta_proyecto <- rprojroot::find_rstudio_root_file()
+carpeta_curso_descriptiva <- paste0(carpeta_proyecto,"/ayudantias_estadistica_descriptiva")
+carpeta_img <- paste0(carpeta_curso_descriptiva,"/input/img") 
+carpeta_aqui <- paste0(carpeta_curso_descriptiva,"/ayudantia01")
+source(paste0(carpeta_proyecto,"/auxiliar/aux_dirs_input.R"))
 ```
 
 ## Presentación
@@ -272,7 +273,7 @@ vector1 + vector2
 R entregará el siguiente mensaje:
 
 ```{r, echo=FALSE}
-knitr::include_graphics(paste0(folder_img,"/img1_13.png"))
+knitr::include_graphics(paste0(carpeta_img,"/img1_13.png"))
 ```
 
 ## Tipos de objetos en R: vectores
@@ -396,7 +397,7 @@ matriz1
 - Veamos una muestra de 373 casos elegidos al azar de la III Encuesta Nacional de Participación y Consumo Cultural (2009). 
 
 ```{r, echo=FALSE}
-load(file_data_consumo_cultural)
+load(archivo_data_consumo_cultural)
 
 cc <- as.data.frame(consumo.cultural[ ,c("folio",
                                          "SEL_Sexo","SEL_Edad",
@@ -475,7 +476,7 @@ labels = c("Primaria",
 
 cc1a <- na.omit(cc1)
 
-save(cc1a, file = paste0(folder_here,"/cc1.RData"))
+save(cc1a, file = paste0(carpeta_aqui,"/cc1.RData"))
 
 rm(consumo.cultural)
 rm(cc)
@@ -513,7 +514,7 @@ getwd()
 \tiny
 
 ```{r, eval=FALSE, echo=TRUE}
-setwd("C:/GitHub/uah_ayudantia_estadistica_2022/ayudantías_estadística_descriptiva")
+setwd("C:/GitHub/uah_ayudantia_estadistica_2022/ayudantias_estadistica_descriptiva/ayudantia01")
 ```
 
 \normalsize
@@ -842,7 +843,6 @@ ggplot(data=cc1a, aes(SEL_NEduc)) +
      y = "Porcentaje",
      fill = "Frecuencia de lectura",
      title = "Frecuencia de lectura según nivel educativo (ENPCC, 2009)")
-#theme_bw() +
 ```
 
 ## Propuesta de ejercicio (totalmente voluntario)
@@ -883,6 +883,6 @@ En inglés:
 
 - Se recomienda leer 1 de las lecturas sugeridas y revisar las complementarias como material de consulta.
 
-```{r, echo=FALSE, message=FALSE, warning=FALSE, include=FALSE}
+```{r, eval=FALSE, echo=FALSE, message=FALSE, warning=FALSE, include=FALSE}
 file.remove(paste0(folder_here,"/cc1.RData")) # eliminar df que creamos antes
 ```
