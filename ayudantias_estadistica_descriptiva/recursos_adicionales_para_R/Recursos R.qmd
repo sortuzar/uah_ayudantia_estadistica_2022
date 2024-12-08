@@ -1,5 +1,5 @@
 ---
-title: Guía Ayudantía 3, parte 1
+title: Recursos y materiales de consulta para lenguaje de programación R
 subtitle: Estadística descriptiva-R | prof. Alejandro González | FEN-UAH
 author: Ayudante Santiago Ortúzar
 date: "`r as.Date('2022-04-01')`" #"`r Sys.time()`"
