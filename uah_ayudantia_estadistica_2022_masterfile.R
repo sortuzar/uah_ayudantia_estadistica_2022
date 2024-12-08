@@ -3,9 +3,10 @@
 rm(list=ls())
 
 # Cargar librerías -------------------------------------------------------------
-library(knitr)
-library(tinytex)
 library(rprojroot)
+library(knitr)
+library(rmarkdown)
+library(tinytex)
 tinytex::tlmgr_install(
   pkgs=
     c("babel",
@@ -14,20 +15,13 @@ tinytex::tlmgr_install(
       "float",
       "adjustbox",
       "xcolor"))
-library(knitr)
-library(rmarkdown)
-
-# Fijar directorios ------------------------------------------------------------
-folder_project <- rprojroot::find_rstudio_root_file()
-folder_here <- paste0(folder_project)
 
 # Correr diapositivas estadística descriptiva ----------------------------------
 ### Correr diapositivas en loop ################################################
 for(rmd in list.files(path=paste0(rprojroot::find_rstudio_root_file(),"/ayudantias_estadistica_descriptiva"),
                       pattern="^presentacion\\_ayudantia\\_[0-1]{2}\\.Rmd$",
                       full.names=TRUE,
-                      recursive=FALSE))
+                      recursive=TRUE))
   {
-  rmarkdown::render(input=rmd,
-                    output_dir=paste0(rprojroot::find_rstudio_root_file(),"/ayudantias_estadistica_descriptiva"))
+  rmarkdown::render(input=rmd) # sin especificar output_dir cada archivo se crea donde está su propio RMD
   }
