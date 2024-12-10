@@ -4,6 +4,9 @@ rm(list=ls())
 
 # Cargar librerías -------------------------------------------------------------
 library(rprojroot)
+library(stringr)
+library(dplyr)
+library(tidyr)
 
 # Fijar directorios ------------------------------------------------------------
 carpeta_proyecto <- rprojroot::find_rstudio_root_file()
@@ -14,11 +17,9 @@ source(paste0(carpeta_proyecto,"/auxiliar/aux_dirs_input.R"))
 
 # Ayudantía 1 ------------------------------------------------------------------
 ### Cargar librerías ###########################################################
-library(dplyr)
-library(tidyr)
 library(reshape)
 
-### Crear base 'cc1.RData ######################################################
+### Crear base 'cc1.RData' #####################################################
 load(archivo_data_consumo_cultural)
 
 cc <- as.data.frame(consumo.cultural[ ,c("folio",
@@ -90,7 +91,7 @@ cc1a <- na.omit(cc1)
 
 save(cc1a, file = paste0(carpeta_ayudantia01,"/cc1.RData"))
 
-rm(consumo.cultural)
-rm(cc)
-rm(cc1)
-rm(cc1a)
+rm(list=ls()[!ls()%in%sort(na.omit(unique(stringr::str_extract(string=ls(),
+                                                               pattern="^(archivo|carpeta)\\_.*$"))))])
+
+# Ayudantía 2 ------------------------------------------------------------------
