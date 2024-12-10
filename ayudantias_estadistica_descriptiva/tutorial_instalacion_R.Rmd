@@ -37,14 +37,6 @@ rm(list=ls())
 library(knitr)
 library(tinytex)
 library(rprojroot)
-tinytex::tlmgr_install(
-  pkgs=
-    c("babel",
-      "caption",
-      "hyperref",
-      "float",
-      "adjustbox",
-      "xcolor"))
 
 # Fijar directorios ------------------------------------------------------------
 carpeta_proyecto <- rprojroot::find_rstudio_root_file()
