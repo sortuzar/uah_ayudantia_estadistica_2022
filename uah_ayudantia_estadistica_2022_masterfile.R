@@ -32,7 +32,7 @@ for(rmd in list.files(path=paste0(rprojroot::find_rstudio_root_file(),"/ayudanti
 
 rm(list=ls())
 
-### Correr diapositivas en loop ################################################
+### Correr diapositivas ########################################################
 for(rmd in list.files(path=paste0(rprojroot::find_rstudio_root_file(),"/ayudantias_estadistica_descriptiva"),
                       pattern="^presentacion\\_ayudantia\\_[0-1]{2}\\.Rmd$",
                       full.names=TRUE,
@@ -42,3 +42,10 @@ for(rmd in list.files(path=paste0(rprojroot::find_rstudio_root_file(),"/ayudanti
   }
 
 rm(list=ls())
+
+### Correr archivos de recursos complementarios ################################
+quarto::quarto_render(
+  input=
+    paste0(
+      rprojroot::find_rstudio_root_file(),
+      "/ayudantias_estadistica_descriptiva/recursos_adicionales_para_r/Recursos R.qmd"))
