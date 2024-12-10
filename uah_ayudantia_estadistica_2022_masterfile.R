@@ -17,7 +17,7 @@ tinytex::tlmgr_install(
       "xcolor"))
 library(quarto)
 
-# Correr diapositivas estadística descriptiva ----------------------------------
+# Generar material estadística descriptiva -------------------------------------
 ### Crear objetos auxiliares ###################################################
 source(paste0(rprojroot::find_rstudio_root_file(),"/ayudantias_estadistica_descriptiva/crear_objetos_auxiliares.R"))
 
