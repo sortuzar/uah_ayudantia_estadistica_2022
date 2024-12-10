@@ -40,3 +40,5 @@ for(rmd in list.files(path=paste0(rprojroot::find_rstudio_root_file(),"/ayudanti
   {
   rmarkdown::render(input=rmd) # sin especificar output_dir cada archivo se crea donde está su propio RMD
   }
+
+rm(list=ls())
