@@ -4,7 +4,7 @@ subtitle: Estadística descriptiva-R | prof. Alejandro González | FEN-UAH
 author: Ayudante Santiago Ortúzar
 date: "`r as.Date('2022-04-01')`" #"`r Sys.time()`"
 date-format: "YYYY-MM-DD" 
-lang: es # español
+lang: en # español
 execute: 
   eval: true
   echo: false
@@ -18,7 +18,7 @@ format:
     documentclass: article      # formato de artículo
     classoption: letter         # papel tamaño carta
     # Secciones
-    number-sections: true       # secciones numeradas
+    number-sections: false      # secciones numeradas
     number-depth: 4             # 4 dígitos en numeración de secciones
     # Captions
     cap-location: top           # ubicación captions tablas y figuras
@@ -34,6 +34,13 @@ format:
     # Figuras
     fig-pos: 'H'                # posición de figuras
     fig-align: center           # alinear figuras
+# Bibliografía
+bibliography: "refs.bib"
+csl: "apa-6th-edition.csl"
+link-citations: true # AVISAR JOACO
+link-bibliography: true # AVISAR JOACO
+nocite: |
+  @*
 ---
 
 ```{r}
@@ -55,3 +62,10 @@ rm(list=ls())
 - Comparto link donde data science UC, ha subido distintos videos sobre cómo hacer web scraping, visualización de datos , y análisis de texto en R: \url{https://vimeo.com/user105597673}
 
 - A *simple* introduction to ggplot2 (for plotting your data!): \url{https://www.r-bloggers.com/2022/04/a-simple-introduction-to-ggplot2-for-plotting-your-data/amp/}
+
+\clearpage
+
+# Referencias bibliográficas adicionales
+
+::: {#refs}
+:::
