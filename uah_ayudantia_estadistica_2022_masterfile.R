@@ -15,6 +15,9 @@ tinytex::tlmgr_install(
       "float",
       "adjustbox",
       "xcolor"))
+tinytex::tlmgr_update(
+  all=TRUE,
+  self=TRUE)
 library(quarto)
 
 # Generar material estadística descriptiva -------------------------------------

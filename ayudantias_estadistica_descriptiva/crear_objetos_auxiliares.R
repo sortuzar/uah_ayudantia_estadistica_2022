@@ -11,9 +11,10 @@ library(tidyr)
 # Fijar directorios ------------------------------------------------------------
 carpeta_proyecto <- rprojroot::find_rstudio_root_file()
 carpeta_curso_descriptiva <- paste0(carpeta_proyecto,"/ayudantias_estadistica_descriptiva")
+carpeta_bbdd <- paste0(carpeta_proyecto,"/bbdd")
 carpeta_img <- paste0(carpeta_curso_descriptiva,"/input/img")
 carpeta_ayudantia01 <- paste0(carpeta_curso_descriptiva,"/ayudantia01")
-source(paste0(carpeta_proyecto,"/auxiliar/aux_dirs_input.R"))
+archivo_data_consumo_cultural <- paste0(carpeta_bbdd,"/consumo.cultural.Rdata")
 
 # Ayudantía 1 ------------------------------------------------------------------
 ### Cargar librerías ###########################################################
