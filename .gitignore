@@ -56,3 +56,12 @@ ayudantias_estadistica_descriptiva/ayudantia03/guia_ayudantia_03_pt1.pdf
 
 # Archivos .RData en ayudantías de estadística descriptiva
 ayudantias_estadistica_descriptiva/ayudantia01/cc1.RData
+
+# Bases de datos en general
+bbdd/*.data
+bbdd/*.dta
+bbdd/*.sav
+bbdd/*.Rdata
+bbdd/*.xlsx
+bbdd/*.txt
+bbdd/*.csv
