@@ -31,7 +31,7 @@ knitr::opts_chunk$set(echo = FALSE, include = TRUE, warning = FALSE, message = F
 
 ```{r preambulo}
 # Limpiar environment ----------------------------------------------------------
-rm(list=ls())
+rm(list = ls())
 
 # Cargar librerías -------------------------------------------------------------
 library(knitr)
@@ -40,9 +40,9 @@ library(rprojroot)
 
 # Fijar directorios ------------------------------------------------------------
 carpeta_proyecto <- rprojroot::find_rstudio_root_file()
-carpeta_curso_descriptiva <- paste0(carpeta_proyecto,"/ayudantias_estadistica_descriptiva")
-carpeta_img <- paste0(carpeta_curso_descriptiva,"/input/img") 
-carpeta_aqui <- paste0(carpeta_curso_descriptiva,"/ayudantia01")
+carpeta_curso_descriptiva <- paste0(carpeta_proyecto, "/ayudantias_estadistica_descriptiva")
+carpeta_img <- paste0(carpeta_curso_descriptiva, "/input/img")
+carpeta_aqui <- paste0(carpeta_curso_descriptiva, "/ayudantia01")
 ```
 
 
