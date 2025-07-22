@@ -2,7 +2,7 @@
 title: Guía Ayudantía 3, parte 1
 subtitle: Estadística descriptiva-R | prof. Alejandro González | FEN-UAH
 author: Ayudante Santiago Ortúzar
-date: "`r as.Date('2022-04-22')`" #"`r Sys.time()`"
+date: "`r as.Date('2022-04-22')`"
 date-format: "YYYY-MM-DD" 
 lang: es # español
 execute: 
