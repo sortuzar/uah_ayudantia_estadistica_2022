@@ -1,7 +1,7 @@
-# Limpiar environment ----------------------------------------------------------
+# 1. Limpiar environment -------------------------------------------------------
 rm(list = ls())
 
-# Cargar librerías -------------------------------------------------------------
+# 2. Cargar librerías ----------------------------------------------------------
 library(rprojroot)
 library(knitr)
 library(rmarkdown)
@@ -23,8 +23,8 @@ tinytex::tlmgr_update(
   self = TRUE
 )
 
-# Generar material estadística descriptiva -------------------------------------
-### Crear objetos auxiliares ###################################################
+# 3. Generar material estadística descriptiva ----------------------------------
+### 3.1 Crear objetos auxiliares ###############################################
 source(
   paste(
     rprojroot::find_rstudio_root_file(),
@@ -33,7 +33,7 @@ source(
     sep = "/"
   )
 )
-### Correr tutorial instalación R ##############################################
+### 3.2 Correr tutorial instalación R ##########################################
 rmarkdown::render(
   input =
     paste(
@@ -45,8 +45,7 @@ rmarkdown::render(
     )
 )
 
-### Correr presentaciones (diapositivas) #######################################
-###### Diapositiva 1 ###########################################################
+### 3.3 Correr ayudantía 1 #####################################################
 rmarkdown::render(
   input =
     paste(
@@ -58,7 +57,7 @@ rmarkdown::render(
     )
 )
 
-###### Diapositiva 2 ###########################################################
+### 3.4 Correr ayudantía 2 #####################################################
 rmarkdown::render(
   input =
     paste(
@@ -70,7 +69,10 @@ rmarkdown::render(
     )
 )
 
-### Correr archivos de recursos complementarios ################################
+### 3.5 Correr ayudantía 3 #####################################################
+
+
+### 3.6 Correr archivos de recursos complementarios ############################
 quarto::quarto_render(
   input =
     paste0(
@@ -79,4 +81,4 @@ quarto::quarto_render(
     )
 )
 
-# Generar material estadística inferencial -------------------------------------
+# 4. Generar material estadística inferencial ----------------------------------
