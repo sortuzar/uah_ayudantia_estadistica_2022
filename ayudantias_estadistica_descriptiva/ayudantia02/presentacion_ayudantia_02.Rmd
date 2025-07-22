@@ -35,7 +35,7 @@ knitr::opts_chunk$set(echo = FALSE, include = TRUE, warning = FALSE, message = F
 
 ```{r preambulo, echo=FALSE}
 # Limpiar environment ----------------------------------------------------------
-rm(list=ls())
+rm(list = ls())
 
 # Cargar librerías -------------------------------------------------------------
 library(knitr)
@@ -44,10 +44,10 @@ library(rprojroot)
 
 # Fijar directorios ------------------------------------------------------------
 carpeta_proyecto <- rprojroot::find_rstudio_root_file()
-carpeta_curso_descriptiva <- paste0(carpeta_proyecto,"/ayudantias_estadistica_descriptiva")
-carpeta_img <- paste0(carpeta_curso_descriptiva,"/input/img") 
-carpeta_aqui <- paste0(carpeta_curso_descriptiva,"/ayudantia02")
-source(paste0(carpeta_proyecto,"/auxiliar/aux_dirs_input.R"))
+carpeta_curso_descriptiva <- paste0(carpeta_proyecto, "/ayudantias_estadistica_descriptiva")
+carpeta_img <- paste0(carpeta_curso_descriptiva, "/input/img")
+carpeta_aqui <- paste0(carpeta_curso_descriptiva, "/ayudantia02")
+source(paste0(carpeta_proyecto, "/auxiliar/aux_dirs_input.R"))
 ```
 
 ## Plan para hoy
@@ -183,7 +183,7 @@ Material de consulta: https://www.rforecology.com/post/data-types-in-r/
 Recuerden que podemos inspeccionar la clase de un vector con el siguiente código:
 
 ```{r, echo=TRUE}
-#Para un vector creado manualmente por nosotros
+# Para un vector creado manualmente por nosotros
 vector1 <- c(1, 2, 3)
 vector2 <- c("a", "b", "c")
 
@@ -196,16 +196,16 @@ class(vector2)
 Recuerden que podemos inspeccionar la clase de un vector con el siguiente código:
 
 ```{r, echo=TRUE}
-#Para un vector dentro de una base de datos
-#Usaremos la base de datos 
-#"ToothGrowth" 
-#disponible en R base
+# Para un vector dentro de una base de datos
+# Usaremos la base de datos
+# "ToothGrowth"
+# disponible en R base
 
-data(ToothGrowth) #carga la base 
-#(ahora está en nuestro environment)
+data(ToothGrowth) # carga la base
+# (ahora está en nuestro environment)
 
-#help(ToothGrowth) 
-#para ver información de la base
+# help(ToothGrowth)
+# para ver información de la base
 ```
 
 ## Tipos de variables en R
@@ -213,10 +213,10 @@ data(ToothGrowth) #carga la base
 Recuerden que podemos inspeccionar la clase de un vector con el siguiente código:
 
 ```{r, echo=TRUE}
-str(ToothGrowth) #3 variables
+str(ToothGrowth) # 3 variables
 
-class(ToothGrowth$len) #largo de los dientes 
-#de los conejillos de indias
+class(ToothGrowth$len) # largo de los dientes
+# de los conejillos de indias
 ```
 
 ## Tipos de variables en R
@@ -228,11 +228,11 @@ class(ToothGrowth$len) #largo de los dientes
 - Las cualitativas nominales se pueden trabajar con vectores de carácter o con factores, pero recordando que el orden de los factores es arbitrario.
 
 ```{r, echo=TRUE}
-#install.packages("PASWR2")
+# install.packages("PASWR2")
 library(PASWR2)
 data(BABERUTH)
 
-class(BABERUTH$team) #el equipo se trabaja como factor
+class(BABERUTH$team) # el equipo se trabaja como factor
 ```
 
 ## Tipos de variables en R
@@ -250,69 +250,73 @@ levels(BABERUTH$team)
 ```{r, echo=FALSE}
 load("BBDD/consumo.cultural.Rdata")
 
-cc <- as.data.frame(consumo.cultural[ ,c("folio",
-                                         "SEL_Sexo","SEL_Edad",
-                                         "SEL_NEduc",
-                                         "m6_64", "m6_66", 
-                                         "m6_67")])
+cc <- as.data.frame(consumo.cultural[, c(
+  "folio",
+  "SEL_Sexo", "SEL_Edad",
+  "SEL_NEduc",
+  "m6_64", "m6_66",
+  "m6_67"
+)])
 
 set.seed(0325)
 
-cc1 <- cc[sample(nrow(cc), size=400), ]
+cc1 <- cc[sample(nrow(cc), size = 400), ]
 
 cc1$SEL_Sexo[cc1$SEL_Sexo == 1] <- "Hombre"
 cc1$SEL_Sexo[cc1$SEL_Sexo == 2] <- "Mujer"
 
-cc1$SEL_NEduc[cc1$SEL_NEduc == 1] <- 1 #"Preescolar"
-cc1$SEL_NEduc[cc1$SEL_NEduc == 2] <- 1 #"Preescolar"
-cc1$SEL_NEduc[cc1$SEL_NEduc == 3] <- 1 #"Primaria"
-cc1$SEL_NEduc[cc1$SEL_NEduc == 4] <- 2 #"Secundaria"
-cc1$SEL_NEduc[cc1$SEL_NEduc == 5] <- 2 #"Secundaria"
-cc1$SEL_NEduc[cc1$SEL_NEduc == 6] <- 2 #"Secundaria"
-cc1$SEL_NEduc[cc1$SEL_NEduc == 7] <- 2 #"Secundaria"
-cc1$SEL_NEduc[cc1$SEL_NEduc == 8] <- 3 #"Superior"
-cc1$SEL_NEduc[cc1$SEL_NEduc == 9] <- 3 #"Superior"
-cc1$SEL_NEduc[cc1$SEL_NEduc == 10] <- 3 #"Superior"
-cc1$SEL_NEduc[cc1$SEL_NEduc == 11] <- 3 #"Superior"
+cc1$SEL_NEduc[cc1$SEL_NEduc == 1] <- 1 # "Preescolar"
+cc1$SEL_NEduc[cc1$SEL_NEduc == 2] <- 1 # "Preescolar"
+cc1$SEL_NEduc[cc1$SEL_NEduc == 3] <- 1 # "Primaria"
+cc1$SEL_NEduc[cc1$SEL_NEduc == 4] <- 2 # "Secundaria"
+cc1$SEL_NEduc[cc1$SEL_NEduc == 5] <- 2 # "Secundaria"
+cc1$SEL_NEduc[cc1$SEL_NEduc == 6] <- 2 # "Secundaria"
+cc1$SEL_NEduc[cc1$SEL_NEduc == 7] <- 2 # "Secundaria"
+cc1$SEL_NEduc[cc1$SEL_NEduc == 8] <- 3 # "Superior"
+cc1$SEL_NEduc[cc1$SEL_NEduc == 9] <- 3 # "Superior"
+cc1$SEL_NEduc[cc1$SEL_NEduc == 10] <- 3 # "Superior"
+cc1$SEL_NEduc[cc1$SEL_NEduc == 11] <- 3 # "Superior"
 cc1$SEL_NEduc[cc1$SEL_NEduc == 12] <- NA
 cc1$SEL_NEduc[cc1$SEL_NEduc == 99] <- NA
 
 library(reshape)
-cc1 <- reshape::rename(cc1, c(m6_64 = "libros_dummy", 
-                              m6_66 = "libros_numero", 
-                              m6_67 = "libros_frecuencia"))
+cc1 <- reshape::rename(cc1, c(
+  m6_64 = "libros_dummy",
+  m6_66 = "libros_numero",
+  m6_67 = "libros_frecuencia"
+))
 
-cc1$libros_dummy[cc1$libros_dummy==1] <- "Sí"
-cc1$libros_dummy[cc1$libros_dummy==2] <- "No"
-cc1$libros_dummy[cc1$libros_dummy==3] <- NA
+cc1$libros_dummy[cc1$libros_dummy == 1] <- "Sí"
+cc1$libros_dummy[cc1$libros_dummy == 2] <- "No"
+cc1$libros_dummy[cc1$libros_dummy == 3] <- NA
 cc1$libros_dummy <- as.character(cc1$libros_dummy)
-cc1$libros_numero[cc1$libros_numero==99] <- NA
+cc1$libros_numero[cc1$libros_numero == 99] <- NA
 
 cc1$libros_frecuencia <- as.numeric(cc1$libros_frecuencia)
-cc1$libros_frecuencia[cc1$libros_frecuencia==2] <- 1
-cc1$libros_frecuencia[cc1$libros_frecuencia==3] <- 2
-cc1$libros_frecuencia[cc1$libros_frecuencia==4] <- 2
-cc1$libros_frecuencia[cc1$libros_frecuencia==5] <- 2
-cc1$libros_frecuencia[cc1$libros_frecuencia==6] <- 3
-cc1$libros_frecuencia[cc1$libros_frecuencia==7] <- 3
-cc1$libros_frecuencia[cc1$libros_frecuencia==8] <- 3
+cc1$libros_frecuencia[cc1$libros_frecuencia == 2] <- 1
+cc1$libros_frecuencia[cc1$libros_frecuencia == 3] <- 2
+cc1$libros_frecuencia[cc1$libros_frecuencia == 4] <- 2
+cc1$libros_frecuencia[cc1$libros_frecuencia == 5] <- 2
+cc1$libros_frecuencia[cc1$libros_frecuencia == 6] <- 3
+cc1$libros_frecuencia[cc1$libros_frecuencia == 7] <- 3
+cc1$libros_frecuencia[cc1$libros_frecuencia == 8] <- 3
 
 library(dplyr)
 library(tidyr)
 
-#cc1 <- cc1 %>%
+# cc1 <- cc1 %>%
 #  dplyr::mutate(libros_numero = replace_na(libros_numero, 0))
 
-#cc1 <- cc1 %>%
+# cc1 <- cc1 %>%
 #  dplyr::mutate(libros_frecuencia = replace_na(libros_frecuencia, 4))
 
-cc1 <- cc1 %>% 
-  dplyr::mutate(libros_numero=ifelse(libros_dummy=='No', replace_na(libros_numero, 0), libros_numero))
+cc1 <- cc1 %>%
+  dplyr::mutate(libros_numero = ifelse(libros_dummy == "No", replace_na(libros_numero, 0), libros_numero))
 
-cc1 <- cc1 %>% 
-  dplyr::mutate(libros_frecuencia=ifelse(libros_dummy=='No', replace_na(libros_frecuencia, 4), libros_frecuencia))
+cc1 <- cc1 %>%
+  dplyr::mutate(libros_frecuencia = ifelse(libros_dummy == "No", replace_na(libros_frecuencia, 4), libros_frecuencia))
 
-#pifias que arreglar
+# pifias que arreglar
 cc1$libros_frecuencia <- as.numeric(cc1$libros_frecuencia)
 cc1$SEL_NEduc <- as.numeric(cc1$SEL_NEduc)
 cc1$libros_numero <- as.character(cc1$libros_numero)
@@ -332,13 +336,13 @@ rm(cc2)
 \scriptsize
 
 ```{r echo=TRUE}
-#Borramos objetos del environment
-rm(list=ls())
+# Borramos objetos del environment
+rm(list = ls())
 
-#Buscamos nuestro propio directorio
+# Buscamos nuestro propio directorio
 getwd()
 
-#Fijamos nuestro directorio
+# Fijamos nuestro directorio
 setwd("D:/SANTIAGO/OneDrive/Documentos/2022 Ayudantía UAH A. González Estadística R")
 ```
 
@@ -350,7 +354,7 @@ setwd("D:/SANTIAGO/OneDrive/Documentos/2022 Ayudantía UAH A. González Estadís
 
 ```{r, echo=TRUE}
 load("BBDD/cc2.Rdata")
-#recuerden que en su propio computador la base puede estar en un lugar distinto
+# recuerden que en su propio computador la base puede estar en un lugar distinto
 ```
 
 \normalsize
@@ -375,14 +379,14 @@ Si nos fijamos, la base viene con problemas:
 \scriptsize
 
 ```{r, echo=TRUE}
-class(cc2$libros_numero) #debería ser un vector numérico, 
-#pero es un carácter
+class(cc2$libros_numero) # debería ser un vector numérico,
+# pero es un carácter
 
-class(cc2$SEL_NEduc) #debería ser un factor, 
-#pero es numérico
+class(cc2$SEL_NEduc) # debería ser un factor,
+# pero es numérico
 
-class(cc2$libros_frecuencia) #debería ser un factor, 
-#pero es numérico
+class(cc2$libros_frecuencia) # debería ser un factor,
+# pero es numérico
 ```
 
 \normalsize
@@ -407,10 +411,13 @@ Convertir de números a factores es más trabajoso (comando `factor()`):
 
 ```{r, echo=TRUE}
 cc2$SEL_NEduc <- factor(cc2$SEL_NEduc,
-levels = c(1,2,3),
-labels = c("Primaria",
-           "Secundaria",
-           "Superior"))
+  levels = c(1, 2, 3),
+  labels = c(
+    "Primaria",
+    "Secundaria",
+    "Superior"
+  )
+)
 ```
 
 ## Tipos de variables en R
@@ -423,11 +430,14 @@ Convertir de números a factores es más trabajoso (comando `factor()`):
 
 ```{r, echo=TRUE}
 cc2$libros_frecuencia <- factor(cc2$libros_frecuencia,
-levels = c(1,2,3, 4),
-labels = c("Todos o casi todos los días",
-           "1 día por semana - 1 día al mes",
-           "Menos de una vez al mes",
-           "Menos de una vez al año"))
+  levels = c(1, 2, 3, 4),
+  labels = c(
+    "Todos o casi todos los días",
+    "1 día por semana - 1 día al mes",
+    "Menos de una vez al mes",
+    "Menos de una vez al año"
+  )
+)
 ```
 
 ## Tipos de variables en R
@@ -495,16 +505,16 @@ Cada vez que "borramos todo" con `rm(list=ls())` debemos volver a fijar el direc
 \tiny
 
 ```{r echo=TRUE}
-#Borramos objetos del environment
-rm(list=ls())
+# Borramos objetos del environment
+rm(list = ls())
 
-#Buscamos nuestro propio directorio
+# Buscamos nuestro propio directorio
 getwd()
 
-#Fijamos nuestro directorio
+# Fijamos nuestro directorio
 setwd("D:/SANTIAGO/OneDrive/Documentos/2022 Ayudantía UAH A. González Estadística R")
 
-#Librería y base de datos
+# Librería y base de datos
 library(PASWR2)
 data(BABERUTH)
 ```
@@ -518,13 +528,15 @@ Debemos recordar que los histogramas pueden usar distintos anchos de columna seg
 \normalsize
 
 ```{r, echo=TRUE, include=TRUE, out.width = '40%'}
-x <- BABERUTH$hr[7:21]   # guardamos las observaciones 
-#de juegos en los NYY
+x <- BABERUTH$hr[7:21] # guardamos las observaciones
+# de juegos en los NYY
 
-#breaks = "Sturges"
-hist(x, breaks = "Sturges", main = "Sturges", 
-     xlab = "HR", 
-     col = "blue")
+# breaks = "Sturges"
+hist(x,
+  breaks = "Sturges", main = "Sturges",
+  xlab = "HR",
+  col = "blue"
+)
 ```
 
 ## Repasar histogramas y gráficos de densidad
@@ -534,10 +546,12 @@ Recordar que los histogramas pueden usar distintos anchos de columna según la c
 \normalsize
 
 ```{r, echo=TRUE, include=TRUE, out.width = '55%'}
-#breaks = "FD"
-hist(x, breaks = "FD", main = "FD", 
-     xlab = "HR", 
-     col = "red")
+# breaks = "FD"
+hist(x,
+  breaks = "FD", main = "FD",
+  xlab = "HR",
+  col = "red"
+)
 ```
 
 ## Repasar histogramas y gráficos de densidad
@@ -547,10 +561,12 @@ Recordar que los histogramas pueden usar distintos anchos de columna según la c
 \normalsize
 
 ```{r, echo=TRUE, include=TRUE, out.width = '55%'}
-#breaks = "Scott"
-hist(x, breaks = "Scott", main = "Scott", 
-     xlab = "HR", 
-     col = "yellow")
+# breaks = "Scott"
+hist(x,
+  breaks = "Scott", main = "Scott",
+  xlab = "HR",
+  col = "yellow"
+)
 ```
 
 ## Un ejemplo más problemático
@@ -559,27 +575,35 @@ hist(x, breaks = "Scott", main = "Scott",
 
 ```{r, echo=TRUE, eval=FALSE}
 library(MASS)
-data(geyser) #la base "geyser" es de la librería "MASS"
+data(geyser) # la base "geyser" es de la librería "MASS"
 
-with(data = geyser, hist(duration, breaks=3, #ancho de columna
-                         freq = FALSE, 
-                         ylim = c(0, 1), 
-                         col = "pink")) 
+with(data = geyser, hist(duration,
+  breaks = 3, # ancho de columna
+  freq = FALSE,
+  ylim = c(0, 1),
+  col = "pink"
+))
 
-with(data = geyser, hist(duration, breaks=6, #ancho de columna
-                         freq = FALSE, 
-                         ylim = c(0, 1), 
-                         col = "pink")) 
+with(data = geyser, hist(duration,
+  breaks = 6, # ancho de columna
+  freq = FALSE,
+  ylim = c(0, 1),
+  col = "pink"
+))
 
-with(data = geyser, hist(duration, breaks=12, #ancho de columna 
-                         freq = FALSE, 
-                         ylim = c(0, 1), 
-                         col = "pink"))
+with(data = geyser, hist(duration,
+  breaks = 12, # ancho de columna
+  freq = FALSE,
+  ylim = c(0, 1),
+  col = "pink"
+))
 
-with(data = geyser, hist(duration, breaks=24, #ancho de columna 
-                         freq = FALSE, 
-                         ylim = c(0, 1), 
-                         col = "pink")) 
+with(data = geyser, hist(duration,
+  breaks = 24, # ancho de columna
+  freq = FALSE,
+  ylim = c(0, 1),
+  col = "pink"
+))
 ```
 
 \normalsize
@@ -590,39 +614,41 @@ with(data = geyser, hist(duration, breaks=24, #ancho de columna
 library(MASS)
 data(geyser)
 
-pdf(file="D:/SANTIAGO/Figuras Latex/fig02_duration_plot1.pdf")
-with(data = geyser, hist(duration, breaks=3, freq = FALSE, ylim = c(0, 1), col = "pink"))
+pdf(file = "D:/SANTIAGO/Figuras Latex/fig02_duration_plot1.pdf")
+with(data = geyser, hist(duration, breaks = 3, freq = FALSE, ylim = c(0, 1), col = "pink"))
 dev.off()
 
-pdf(file="D:/SANTIAGO/Figuras Latex/fig02_duration_plot2.pdf")
-with(data = geyser, hist(duration, breaks=6, freq = FALSE, ylim = c(0, 1), col = "pink"))
+pdf(file = "D:/SANTIAGO/Figuras Latex/fig02_duration_plot2.pdf")
+with(data = geyser, hist(duration, breaks = 6, freq = FALSE, ylim = c(0, 1), col = "pink"))
 dev.off()
 
-pdf(file="D:/SANTIAGO/Figuras Latex/fig02_duration_plot3.pdf")
-with(data = geyser, hist(duration, breaks=12, freq = FALSE, ylim = c(0, 1), col = "pink"))
+pdf(file = "D:/SANTIAGO/Figuras Latex/fig02_duration_plot3.pdf")
+with(data = geyser, hist(duration, breaks = 12, freq = FALSE, ylim = c(0, 1), col = "pink"))
 dev.off()
 
-pdf(file="D:/SANTIAGO/Figuras Latex/fig02_duration_plot4.pdf")
-with(data = geyser, hist(duration, breaks=24, freq = FALSE, ylim = c(0, 1), col = "pink"))
+pdf(file = "D:/SANTIAGO/Figuras Latex/fig02_duration_plot4.pdf")
+with(data = geyser, hist(duration, breaks = 24, freq = FALSE, ylim = c(0, 1), col = "pink"))
 dev.off()
 ```
 
 ```{r, echo=FALSE, include=FALSE, eval=FALSE, message=FALSE, warning=FALSE}
-#library(gridExtra)
-#grid.arrange(stGraphs, FGraph, nrow=1)
-#grid.arrange(
+# library(gridExtra)
+# grid.arrange(stGraphs, FGraph, nrow=1)
+# grid.arrange(
 #  grobs = gl,
 #  widths = c(2, 1, 1),
 #  layout_matrix = rbind(c(1, 2, NA),
 #                        c(3, 3, 4))
-#)
+# )
 ```
 
 ```{r, echo=FALSE,out.width="45%", out.height="40%",fig.show='hold',fig.align='center'}
-knitr::include_graphics(c("D:/SANTIAGO/Figuras Latex/fig02_duration_plot1.pdf",
-                          "D:/SANTIAGO/Figuras Latex/fig02_duration_plot2.pdf",
-                          "D:/SANTIAGO/Figuras Latex/fig02_duration_plot3.pdf",
-                          "D:/SANTIAGO/Figuras Latex/fig02_duration_plot4.pdf"))
+knitr::include_graphics(c(
+  "D:/SANTIAGO/Figuras Latex/fig02_duration_plot1.pdf",
+  "D:/SANTIAGO/Figuras Latex/fig02_duration_plot2.pdf",
+  "D:/SANTIAGO/Figuras Latex/fig02_duration_plot3.pdf",
+  "D:/SANTIAGO/Figuras Latex/fig02_duration_plot4.pdf"
+))
 ```
 
 ## Un ejemplo más problemático
@@ -638,82 +664,111 @@ Una manera de resolver esto es usando gráficos y curvas de densidad (hay una ex
 \tiny
 
 ```{r, echo=TRUE, eval=FALSE}
-with(data = geyser, hist(duration, breaks=3, #ancho de columna
-                         freq = FALSE, ylim = c(0, 1), 
-                         col = "pink")) 
-with(data = geyser, lines(density(duration), col="red", 
-                          lwd=2))
+with(data = geyser, hist(duration,
+  breaks = 3, # ancho de columna
+  freq = FALSE, ylim = c(0, 1),
+  col = "pink"
+))
+with(data = geyser, lines(density(duration),
+  col = "red",
+  lwd = 2
+))
 
-with(data = geyser, hist(duration, breaks=6, #ancho de columna
-                         freq = FALSE, ylim = c(0, 1), 
-                         col = "pink")) 
-with(data = geyser, lines(density(duration), col="red", 
-                          lwd=2))
+with(data = geyser, hist(duration,
+  breaks = 6, # ancho de columna
+  freq = FALSE, ylim = c(0, 1),
+  col = "pink"
+))
+with(data = geyser, lines(density(duration),
+  col = "red",
+  lwd = 2
+))
 
-with(data = geyser, hist(duration, breaks=12, #ancho de columna 
-                         freq = FALSE, ylim = c(0, 1), 
-                         col = "pink"))
-with(data = geyser, lines(density(duration), col="red", 
-                          lwd=2))
+with(data = geyser, hist(duration,
+  breaks = 12, # ancho de columna
+  freq = FALSE, ylim = c(0, 1),
+  col = "pink"
+))
+with(data = geyser, lines(density(duration),
+  col = "red",
+  lwd = 2
+))
 
-with(data = geyser, hist(duration, breaks=24, #ancho de columna 
-                         freq = FALSE, ylim = c(0, 1), 
-                         col = "pink")) 
-with(data = geyser, lines(density(duration), col="red", 
-                          lwd=2))
+with(data = geyser, hist(duration,
+  breaks = 24, # ancho de columna
+  freq = FALSE, ylim = c(0, 1),
+  col = "pink"
+))
+with(data = geyser, lines(density(duration),
+  col = "red",
+  lwd = 2
+))
 ```
 
 \normalsize
 
 ```{r, echo=FALSE, include=FALSE, eval=TRUE, message=FALSE, warning=FALSE}
-pdf(file="D:/SANTIAGO/Figuras Latex/fig02_duration_plot1_density.pdf")
-with(data = geyser, hist(duration, breaks=3, freq = FALSE, ylim = c(0, 1), col = "pink"))
-with(data = geyser, lines(density(duration), col="red", 
-                          lwd=2))
+pdf(file = "D:/SANTIAGO/Figuras Latex/fig02_duration_plot1_density.pdf")
+with(data = geyser, hist(duration, breaks = 3, freq = FALSE, ylim = c(0, 1), col = "pink"))
+with(data = geyser, lines(density(duration),
+  col = "red",
+  lwd = 2
+))
 dev.off()
 
-pdf(file="D:/SANTIAGO/Figuras Latex/fig02_duration_plot2_density.pdf")
-with(data = geyser, hist(duration, breaks=6, freq = FALSE, ylim = c(0, 1), col = "pink"))
-with(data = geyser, lines(density(duration), col="red", 
-                          lwd=2))
+pdf(file = "D:/SANTIAGO/Figuras Latex/fig02_duration_plot2_density.pdf")
+with(data = geyser, hist(duration, breaks = 6, freq = FALSE, ylim = c(0, 1), col = "pink"))
+with(data = geyser, lines(density(duration),
+  col = "red",
+  lwd = 2
+))
 dev.off()
 
-pdf(file="D:/SANTIAGO/Figuras Latex/fig02_duration_plot3_density.pdf")
-with(data = geyser, hist(duration, breaks=12, freq = FALSE, ylim = c(0, 1), col = "pink"))
-with(data = geyser, lines(density(duration), col="red", 
-                          lwd=2))
+pdf(file = "D:/SANTIAGO/Figuras Latex/fig02_duration_plot3_density.pdf")
+with(data = geyser, hist(duration, breaks = 12, freq = FALSE, ylim = c(0, 1), col = "pink"))
+with(data = geyser, lines(density(duration),
+  col = "red",
+  lwd = 2
+))
 dev.off()
 
-pdf(file="D:/SANTIAGO/Figuras Latex/fig02_duration_plot4_density.pdf")
-with(data = geyser, hist(duration, breaks=24, freq = FALSE, ylim = c(0, 1), col = "pink"))
-with(data = geyser, lines(density(duration), col="red", 
-                          lwd=2))
+pdf(file = "D:/SANTIAGO/Figuras Latex/fig02_duration_plot4_density.pdf")
+with(data = geyser, hist(duration, breaks = 24, freq = FALSE, ylim = c(0, 1), col = "pink"))
+with(data = geyser, lines(density(duration),
+  col = "red",
+  lwd = 2
+))
 dev.off()
 ```
 
 ## Aplicando una curva de densidad al histograma
 
 ```{r, echo=FALSE,out.width="45%", out.height="40%",fig.show='hold',fig.align='center'}
-knitr::include_graphics(c("D:/SANTIAGO/Figuras Latex/fig02_duration_plot1_density.pdf",
-                          "D:/SANTIAGO/Figuras Latex/fig02_duration_plot2_density.pdf",
-                          "D:/SANTIAGO/Figuras Latex/fig02_duration_plot3_density.pdf",
-                          "D:/SANTIAGO/Figuras Latex/fig02_duration_plot4_density.pdf"))
+knitr::include_graphics(c(
+  "D:/SANTIAGO/Figuras Latex/fig02_duration_plot1_density.pdf",
+  "D:/SANTIAGO/Figuras Latex/fig02_duration_plot2_density.pdf",
+  "D:/SANTIAGO/Figuras Latex/fig02_duration_plot3_density.pdf",
+  "D:/SANTIAGO/Figuras Latex/fig02_duration_plot4_density.pdf"
+))
 ```
 ## Gráfico de densidad sin histograma
 
 \scriptsize
 
 ```{r, echo=TRUE, eval=FALSE}
-with(data = geyser, 
-     plot(density(duration), 
-          col="red", lwd=2, main="Densidad de 'duration'"))
+with(
+  data = geyser,
+  plot(density(duration),
+    col = "red", lwd = 2, main = "Densidad de 'duration'"
+  )
+)
 ```
 
 \normalsize
 
 ```{r, echo=FALSE, include=FALSE, eval=TRUE, message=FALSE, warning=FALSE}
-pdf(file="D:/SANTIAGO/Figuras Latex/fig02_duration_plot5_density sin hist.pdf")
-with(data = geyser, plot(density(duration), col="red", lwd=2, main="Densidad de 'duration'"))
+pdf(file = "D:/SANTIAGO/Figuras Latex/fig02_duration_plot5_density sin hist.pdf")
+with(data = geyser, plot(density(duration), col = "red", lwd = 2, main = "Densidad de 'duration'"))
 dev.off()
 ```
 

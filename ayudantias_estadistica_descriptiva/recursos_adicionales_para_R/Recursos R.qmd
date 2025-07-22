@@ -44,7 +44,7 @@ nocite: |
 ---
 
 ```{r}
-rm(list=ls())
+rm(list = ls())
 ```
 
 - Descriptive Statistics in R: \url{https://www.r-bloggers.com/2021/10/descriptive-statistics-in-r-3/amp/}

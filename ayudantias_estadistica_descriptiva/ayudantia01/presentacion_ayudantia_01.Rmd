@@ -29,16 +29,18 @@ editor_options:
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = FALSE, 
-                      include = TRUE, 
-                      warning = FALSE, 
-                      message = FALSE,
-                      eval = TRUE)
+knitr::opts_chunk$set(
+  echo = FALSE,
+  include = TRUE,
+  warning = FALSE,
+  message = FALSE,
+  eval = TRUE
+)
 ```
 
 ```{r preambulo}
 # Limpiar environment ----------------------------------------------------------
-rm(list=ls())
+rm(list = ls())
 
 # Cargar librerías -------------------------------------------------------------
 library(knitr)
@@ -47,11 +49,11 @@ library(rprojroot)
 
 # Fijar directorios ------------------------------------------------------------
 carpeta_proyecto <- rprojroot::find_rstudio_root_file()
-carpeta_curso_descriptiva <- paste0(carpeta_proyecto,"/ayudantias_estadistica_descriptiva")
-carpeta_bbdd <- paste0(carpeta_proyecto,"/bbdd")
-carpeta_img <- paste0(carpeta_curso_descriptiva,"/input/img") 
-carpeta_aqui <- paste0(carpeta_curso_descriptiva,"/ayudantia01")
-archivo_data_consumo_cultural <- paste0(carpeta_bbdd,"/consumo.cultural.Rdata")
+carpeta_curso_descriptiva <- paste0(carpeta_proyecto, "/ayudantias_estadistica_descriptiva")
+carpeta_bbdd <- paste0(carpeta_proyecto, "/bbdd")
+carpeta_img <- paste0(carpeta_curso_descriptiva, "/input/img")
+carpeta_aqui <- paste0(carpeta_curso_descriptiva, "/ayudantia01")
+archivo_data_consumo_cultural <- paste0(carpeta_bbdd, "/consumo.cultural.Rdata")
 ```
 
 ## Presentación
@@ -121,12 +123,12 @@ archivo_data_consumo_cultural <- paste0(carpeta_bbdd,"/consumo.cultural.Rdata")
 ## Observaciones
 
 ```{r, echo=TRUE}
-55+45 #"55+45" es código de R, pero esto no
+55 + 45 # "55+45" es código de R, pero esto no
 
-#Esta función es útil para comentar nuestro código
+# Esta función es útil para comentar nuestro código
 
-#Ayuda a quien lo lea a entenderlo mejor 
-#(muchas veces nosotros mismos)
+# Ayuda a quien lo lea a entenderlo mejor
+# (muchas veces nosotros mismos)
 ```
 
 ## Los objetos en R
@@ -144,7 +146,7 @@ objeto1 <- 1
 
 objeto2 <- 1 + 1
 
-objeto3 <- 2-1
+objeto3 <- 2 - 1
 ```
 
 - Estas son funciones para *crear* objetos, pero por sí mismos no nos "muestran" el objeto creado.
@@ -268,7 +270,7 @@ vector1 + vector2
 R entregará el siguiente mensaje:
 
 ```{r, echo=FALSE}
-knitr::include_graphics(paste0(carpeta_img,"/img1_13.png"))
+knitr::include_graphics(paste0(carpeta_img, "/img1_13.png"))
 ```
 
 ## Tipos de objetos en R: vectores
@@ -334,13 +336,13 @@ str(vector5)
 ```{r, echo=TRUE}
 ejercicio <- c(5, 8, 3, 2, 10)
 
-ejercicio+9
+ejercicio + 9
 
-ejercicio*2
+ejercicio * 2
 
-5/7 * ejercicio
+5 / 7 * ejercicio
 
-ejercicio*ejercicio #o también:
+ejercicio * ejercicio # o también:
 
 ejercicio^2
 ```
@@ -352,7 +354,7 @@ ejercicio^2
 - Una matriz es un tipo de objeto bidimensional que, al igual que un vector, puede tomar valores alfabéticos o numéricos.
 
 ```{r, echo=TRUE}
-matriz1 <- matrix(1:25,nrow=5,ncol=5)
+matriz1 <- matrix(1:25, nrow = 5, ncol = 5)
 
 matriz1
 ```
@@ -364,7 +366,7 @@ matriz1
 - Podemos realizar todas las operaciones del álgebra de matrices:
 
 ```{r, echo=TRUE}
-matriz1+matriz1
+matriz1 + matriz1
 ```
 
 ## Tipos de objetos en R: matrices
@@ -380,7 +382,7 @@ matriz1+matriz1
 - Cuarta fila y quinta columna de la matriz 1:
 
 ```{r, echo=TRUE}
-matriz1[4,5]
+matriz1[4, 5]
 
 matriz1
 ```
@@ -429,7 +431,7 @@ setwd("C:/GitHub/uah_ayudantia_estadistica_2022/ayudantias_estadistica_descripti
 ## Tipos de objetos en R: bases de datos (data frames)
 
 ```{r, eval=TRUE, echo=FALSE}
-load(paste0(carpeta_aqui,"/cc1.RData"))
+load(paste0(carpeta_aqui, "/cc1.RData"))
 ```
 
 ```{r, eval=FALSE, echo=TRUE}
@@ -551,7 +553,7 @@ prop.table(table(cc1a$libros_frecuencia))
 \scriptsize
 
 ```{r, echo=TRUE}
-100*prop.table(table(cc1a$libros_frecuencia))
+100 * prop.table(table(cc1a$libros_frecuencia))
 ```
 
 \normalsize
@@ -565,7 +567,7 @@ prop.table(table(cc1a$libros_frecuencia))
 \scriptsize
 
 ```{r, echo=TRUE}
-round(100*prop.table(table(cc1a$libros_frecuencia)),digits=1)
+round(100 * prop.table(table(cc1a$libros_frecuencia)), digits = 1)
 ```
 
 \normalsize
@@ -593,12 +595,12 @@ median(cc1a$libros_numero)
 \scriptsize
 
 ```{r, echo=TRUE}
-cc1a[100,"libros_frecuencia"]
+cc1a[100, "libros_frecuencia"]
 
-#o lo mismo escrito de otra forma:
-cc1a[100,7] 
-#porque libros_frecuencia es la séptima variable (columna)
-#de nuestro data frame
+# o lo mismo escrito de otra forma:
+cc1a[100, 7]
+# porque libros_frecuencia es la séptima variable (columna)
+# de nuestro data frame
 ```
 
 \normalsize
@@ -610,14 +612,14 @@ cc1a[100,7]
 \tiny
 
 ```{r, echo=TRUE}
-cc1a[150,c("libros_dummy","libros_numero","libros_frecuencia")]
+cc1a[150, c("libros_dummy", "libros_numero", "libros_frecuencia")]
 
-cc1a[251,c("libros_dummy","libros_numero","libros_frecuencia")]
+cc1a[251, c("libros_dummy", "libros_numero", "libros_frecuencia")]
 
-#o lo mismo escrito de otra forma:
-cc1a[251,5:7]
-#porque las variables son la número 5, 6 y 7
-#de nuestro data frame
+# o lo mismo escrito de otra forma:
+cc1a[251, 5:7]
+# porque las variables son la número 5, 6 y 7
+# de nuestro data frame
 ```
 
 \normalsize
@@ -632,10 +634,10 @@ cc1a[251,5:7]
 
 ```{r, echo=TRUE}
 tapply(cc1a$libros_numero, cc1a$SEL_NEduc, mean)
-#media de libros leídos por año según nivel educativo
+# media de libros leídos por año según nivel educativo
 
 tapply(cc1a$libros_numero, cc1a$SEL_Sexo, mean)
-#media de libros leídos por año según sexo
+# media de libros leídos por año según sexo
 ```
 \normalsize
 
@@ -646,14 +648,14 @@ tapply(cc1a$libros_numero, cc1a$SEL_Sexo, mean)
 \tiny
 
 ```{r, echo=TRUE}
-table(cc1a$libros_frecuencia,cc1a$SEL_NEduc)
-#frecuencia de lectura según nivel educativo
+table(cc1a$libros_frecuencia, cc1a$SEL_NEduc)
+# frecuencia de lectura según nivel educativo
 
-#guardemos esto como objeto para mayor simplicidad:
-lectura_NEduc <- table(cc1a$libros_frecuencia,cc1a$SEL_NEduc)
+# guardemos esto como objeto para mayor simplicidad:
+lectura_NEduc <- table(cc1a$libros_frecuencia, cc1a$SEL_NEduc)
 
-#lo mismo de otra manera:
-xtabs(~libros_frecuencia+SEL_NEduc, data=cc1a)
+# lo mismo de otra manera:
+xtabs(~ libros_frecuencia + SEL_NEduc, data = cc1a)
 ```
 \normalsize
 
@@ -666,7 +668,7 @@ xtabs(~libros_frecuencia+SEL_NEduc, data=cc1a)
 \scriptsize
 
 ```{r, echo=TRUE}
-round(100*prop.table(lectura_NEduc),2)
+round(100 * prop.table(lectura_NEduc), 2)
 ```
 \normalsize
 
@@ -679,8 +681,8 @@ round(100*prop.table(lectura_NEduc),2)
 \scriptsize
 
 ```{r, echo=TRUE}
-round(100*prop.table(lectura_NEduc, margin=2),2)
-#el porcentaje de columna se especifica con margin=2
+round(100 * prop.table(lectura_NEduc, margin = 2), 2)
+# el porcentaje de columna se especifica con margin=2
 ```
 \normalsize
 
@@ -689,7 +691,7 @@ round(100*prop.table(lectura_NEduc, margin=2),2)
 \tiny
 
 ```{r, echo=FALSE}
-round(100*prop.table(lectura_NEduc, margin=2),2)
+round(100 * prop.table(lectura_NEduc, margin = 2), 2)
 ```
 
 \normalsize
@@ -713,8 +715,8 @@ round(100*prop.table(lectura_NEduc, margin=2),2)
 \tiny
 
 ```{r, echo=TRUE}
-round(100*prop.table(lectura_NEduc, margin=1),2)
-#el porcentaje de columna se especifica con margin=1
+round(100 * prop.table(lectura_NEduc, margin = 1), 2)
+# el porcentaje de columna se especifica con margin=1
 ```
 \normalsize
 
@@ -744,16 +746,22 @@ round(100*prop.table(lectura_NEduc, margin=1),2)
 library(ggplot2)
 library(scales)
 
-ggplot(data=cc1a, aes(SEL_NEduc)) +
-  geom_bar(aes(fill=as.factor(libros_frecuencia)), position="fill",
-           width = 0.4) +
-  theme(legend.text = element_text(size = 11),
-        legend.title = element_text(size = 13)) +
-  scale_y_continuous(labels=scales::percent) +
-  labs(x = "Nivel educativo",
-     y = "Porcentaje",
-     fill = "Frecuencia de lectura",
-     title = "Frecuencia de lectura según nivel educativo (ENPCC, 2009)")
+ggplot(data = cc1a, aes(SEL_NEduc)) +
+  geom_bar(aes(fill = as.factor(libros_frecuencia)),
+    position = "fill",
+    width = 0.4
+  ) +
+  theme(
+    legend.text = element_text(size = 11),
+    legend.title = element_text(size = 13)
+  ) +
+  scale_y_continuous(labels = scales::percent) +
+  labs(
+    x = "Nivel educativo",
+    y = "Porcentaje",
+    fill = "Frecuencia de lectura",
+    title = "Frecuencia de lectura según nivel educativo (ENPCC, 2009)"
+  )
 ```
 
 ## Propuesta de ejercicio (totalmente voluntario)
@@ -795,5 +803,5 @@ En inglés:
 - Se recomienda leer 1 de las lecturas sugeridas y revisar las complementarias como material de consulta.
 
 ```{r, eval=FALSE, echo=FALSE, message=FALSE, warning=FALSE, include=FALSE}
-file.remove(paste0(folder_here,"/cc1.RData")) # eliminar df que creamos antes
+file.remove(paste0(folder_here, "/cc1.RData")) # eliminar df que creamos antes
 ```

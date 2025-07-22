@@ -46,7 +46,7 @@ Para usar este dataframe, siga los siguientes pasos:
 #| eval: false
 #| echo: true
 #| include: true
-rm(list=ls())
+rm(list = ls())
 ```
 
 
